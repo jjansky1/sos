@@ -19,12 +19,15 @@ class Landscape(Plugin, UbuntuPlugin):
     packages = ('landscape-client', 'landscape-server')
 
     def setup(self):
-        self.add_copy_spec("/etc/landscape/client.conf")
-        self.add_copy_spec("/etc/default/landscape-client")
-        self.add_copy_spec("/etc/landscape/service.conf")
-        self.add_copy_spec("/etc/landscape/service.conf.old")
-        self.add_copy_spec("/etc/default/landscape-server")
-        self.add_copy_spec("/var/lib/landscape/landscape-oops/*/OOPS-*")
+        self.add_copy_spec([
+            "/etc/landscape/client.conf",
+            "/etc/default/landscape-client",
+            "/etc/landscape/service.conf",
+            "/etc/landscape/service.conf.old",
+            "/etc/default/landscape-server",
+            "/var/lib/landscape/landscape-oops/*/OOPS-*",
+        ], since=None)
+
         if not self.get_option("all_logs"):
             self.add_copy_spec("/var/log/landscape/*.log")
             self.add_copy_spec("/var/log/landscape-server/*.log")

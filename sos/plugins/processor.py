@@ -23,7 +23,7 @@ class Processor(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
             "/proc/cpuinfo",
             "/sys/class/cpuid",
             "/sys/devices/system/cpu"
-        ])
+        ], since=None)
 
         self.add_cmd_output([
             "lscpu",

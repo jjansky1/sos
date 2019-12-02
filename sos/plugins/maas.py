@@ -46,10 +46,12 @@ class Maas(Plugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/squid-deb-proxy",
             "/etc/maas",
-            "/var/lib/maas/dhcp*",
+            "/var/lib/maas/dhcp*"
+        ], since=None)
+        self.add_copy_spec([
             "/var/log/apache2*",
             "/var/log/maas*",
-            "/var/log/upstart/maas-*",
+            "/var/log/upstart/maas-*"
         ])
         self.add_cmd_output([
             "apt-cache policy maas-*",

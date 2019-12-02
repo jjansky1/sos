@@ -28,7 +28,7 @@ class Grub2(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/etc/default/grub",
             "/etc/grub2.cfg",
             "/etc/grub.d"
-        ])
+        ], since=None)
 
         self.add_cmd_output("ls -lanR /boot")
         # call grub2-mkconfig with GRUB_DISABLE_OS_PROBER=true to prevent

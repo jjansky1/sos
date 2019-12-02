@@ -42,7 +42,7 @@ class Autofs(Plugin):
             return i[1]
 
     def setup(self):
-        self.add_copy_spec("/etc/auto*")
+        self.add_copy_spec("/etc/auto*", since=None)
         self.add_service_status("autofs")
         self.add_cmd_output("automount -m")
         if self.checkdebug():

@@ -34,7 +34,7 @@ class Teamd(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/dbus-1/system.d/teamd.conf",
             "/usr/lib/systemd/system/teamd@.service"
-        ])
+        ], since=None)
         teams = self._get_team_interfaces()
         for team in teams:
             self.add_cmd_output([

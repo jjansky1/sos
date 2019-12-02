@@ -90,7 +90,7 @@ class Pcp(Plugin, RedHatPlugin, DebianPlugin):
             self.pcp_sysconf_dir,
             self.pcp_conffile,
             var_conf_dir
-        ])
+        ], since=None)
 
         # We explicitely avoid /var/lib/pcp/config/{pmchart,pmlogconf,pmieconf,
         # pmlogrewrite} as in 99% of the cases they are just copies from the
@@ -122,7 +122,7 @@ class Pcp(Plugin, RedHatPlugin, DebianPlugin):
             # collect pmmgr logs up to 'pmmgrlogs' size limit
             path = os.path.join(self.pcp_log_dir, 'pmmgr',
                                 self.pcp_hostname, '*')
-            self.add_copy_spec(path, sizelimit=self.sizelimit, tailit=False)
+            self.add_copy_spec(path, sizelimit=self.sizelimit, tailit=False, since=None)
             # collect newest pmlogger logs up to 'pmloggerfiles' count
             files_collected = 0
             path = os.path.join(self.pcp_log_dir, 'pmlogger',

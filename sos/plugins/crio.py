@@ -35,7 +35,7 @@ class CRIO(Plugin, RedHatPlugin, UbuntuPlugin):
             "/etc/crio/seccomp.json",
             "/etc/systemd/system/cri-o.service",
             "/etc/sysconfig/crio-*"
-        ])
+        ], since=None)
 
         self.add_env_var([
             'HTTP_PROXY',

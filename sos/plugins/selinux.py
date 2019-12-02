@@ -24,7 +24,7 @@ class SELinux(Plugin, RedHatPlugin):
         self.add_copy_spec([
             '/etc/sestatus.conf',
             '/etc/selinux'
-        ])
+        ], since=None)
         self.add_cmd_output('sestatus')
 
         state = self.exec_cmd('getenforce')['output']

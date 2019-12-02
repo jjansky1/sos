@@ -36,7 +36,7 @@ class OpenStackCeilometer(Plugin):
         self.add_copy_spec([
             "/etc/ceilometer/*",
             self.var_puppet_gen + "/etc/ceilometer/*"
-        ])
+        ], since=None)
 
     def apply_regex_sub(self, regexp, subst):
         self.do_path_regex_sub("/etc/ceilometer/*", regexp, subst)

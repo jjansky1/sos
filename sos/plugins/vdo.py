@@ -24,7 +24,7 @@ class Vdo(Plugin, RedHatPlugin):
     )
 
     def setup(self):
-        self.add_copy_spec(self.files)
+        self.add_copy_spec(self.files, since=None)
         vdos = self.collect_cmd_output('vdo list --all')
         for vdo in vdos['output'].splitlines():
             self.add_cmd_output("vdo status -n %s" % vdo)

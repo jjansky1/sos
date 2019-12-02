@@ -38,7 +38,7 @@ class OpenStackGlance(Plugin):
             "/etc/glance/",
             self.var_puppet_gen + "/etc/glance/",
             self.var_puppet_gen + "/etc/my.cnf.d/tripleo.cnf"
-        ])
+        ], since=None)
 
         # collect commands output only if the openstack-glance-api service
         # is running

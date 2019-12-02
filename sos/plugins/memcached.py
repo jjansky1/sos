@@ -25,7 +25,7 @@ class RedHatMemcached(Memcached, RedHatPlugin):
 
     def setup(self):
         super(RedHatMemcached, self).setup()
-        self.add_copy_spec("/etc/sysconfig/memcached")
+        self.add_copy_spec("/etc/sysconfig/memcached", since=None)
 
 
 class DebianMemcached(Memcached, DebianPlugin, UbuntuPlugin):
@@ -37,6 +37,6 @@ class DebianMemcached(Memcached, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/memcached.conf",
             "/etc/default/memcached"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

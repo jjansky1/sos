@@ -24,7 +24,7 @@ class Ssmtp(Plugin, RedHatPlugin):
             "/etc/ssmtp/ssmtp.conf",
             "/etc/ssmtp/revaliases",
             "/etc/aliases"
-        ])
+        ], since=None)
 
     def postproc(self):
         self.do_file_sub(

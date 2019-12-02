@@ -21,7 +21,7 @@ class RedHatInsights(Plugin, RedHatPlugin):
     )
 
     def setup(self):
-        self.add_copy_spec(self.config)
+        self.add_copy_spec(self.config, since=None)
 
         # Legacy log file location
         self.add_copy_spec("/var/log/redhat-access-insights/*.log")

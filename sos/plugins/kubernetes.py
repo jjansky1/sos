@@ -38,8 +38,8 @@ class Kubernetes(Plugin):
         return any([path.exists(f) for f in self.files])
 
     def setup(self):
-        self.add_copy_spec("/etc/kubernetes")
-        self.add_copy_spec("/run/flannel")
+        self.add_copy_spec("/etc/kubernetes", since=None)
+        self.add_copy_spec("/run/flannel", since=None)
 
         self.add_env_var([
             'KUBECONFIG',

@@ -19,7 +19,7 @@ class Ldap(Plugin):
 
     def setup(self):
         super(Ldap, self).setup()
-        self.add_copy_spec("/etc/ldap.conf")
+        self.add_copy_spec("/etc/ldap.conf", since=None)
 
     def postproc(self):
         self.do_file_sub("/etc/ldap.conf", r"(\s*bindpw\s*)\S+", r"\1******")
@@ -46,7 +46,7 @@ class RedHatLdap(Ldap, RedHatPlugin):
             "/etc/openldap/certs/secmod.db",
             "/etc/nslcd.conf",
             "/etc/pam_ldap.conf"
-        ])
+        ], since=None)
         self.add_cmd_output("certutil -L -d /etc/openldap")
 
     def postproc(self):
@@ -78,7 +78,7 @@ class DebianLdap(Ldap, DebianPlugin, UbuntuPlugin):
             "/etc/slapd.conf",
             "/etc/ldap/slapd.d",
             "/etc/nslcd.conf",
-        ])
+        ], since=None)
 
         self.add_cmd_output("ldapsearch -x -b '' -s base 'objectclass=*'")
         self.add_cmd_output(

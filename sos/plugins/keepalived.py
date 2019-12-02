@@ -24,6 +24,6 @@ class Keepalived(Plugin, RedHatPlugin):
         self.add_copy_spec([
             "/etc/keepalived/keepalived.conf",
             "/etc/sysconfig/keepalived"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

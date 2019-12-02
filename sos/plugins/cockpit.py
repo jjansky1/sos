@@ -21,7 +21,7 @@ class Cockpit(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             '/etc/cockpit/cockpit.conf',
             '/etc/pam.d/cockpit'
-        ])
+        ], since=None)
 
         self.add_cmd_output('remotectl certificate')
 

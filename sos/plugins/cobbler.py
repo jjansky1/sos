@@ -23,9 +23,12 @@ class RedHatCobbler(Cobbler, RedHatPlugin):
     def setup(self):
         self.add_copy_spec([
             "/etc/cobbler",
-            "/var/log/cobbler",
             "/var/lib/rhn/kickstarts",
             "/var/lib/cobbler"
+        ], since=None)
+
+        self.add_copy_spec([
+            "/var/log/cobbler",
         ])
 
 
@@ -36,9 +39,13 @@ class DebianCobbler(Cobbler, DebianPlugin, UbuntuPlugin):
     def setup(self):
         self.add_copy_spec([
             "/etc/cobbler",
-            "/var/log/cobbler",
             "/var/lib/cobbler"
+        ], since=None)
+
+        self.add_copy_spec([
+            "/var/log/cobbler"
         ])
+
         self.add_forbidden_path("/var/lib/cobbler/isos")
 
 # vim: set et ts=4 sw=4 :

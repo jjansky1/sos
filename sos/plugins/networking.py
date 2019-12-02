@@ -72,7 +72,7 @@ class Networking(Plugin):
             "/sys/class/net/*/flags",
             "/sys/class/net/*/statistics/",
             "/etc/iproute2"
-        ])
+        ], since=None)
 
         self.add_forbidden_path([
             "/proc/net/rpc/use-gss-proxy",
@@ -272,13 +272,13 @@ class UbuntuNetworking(Networking, UbuntuPlugin, DebianPlugin):
             "/etc/network/interfaces",
             "/etc/network/interfaces.d",
             "/etc/ufw",
-            "/var/log/ufw.Log",
             "/etc/resolv.conf",
             "/run/netplan/*.yaml",
             "/etc/netplan/*.yaml",
             "/lib/netplan/*.yaml",
             "/run/systemd/network"
-        ])
+        ], since=None)
+        self.add_copy_spec("/var/log/ufw.Log")
         self.add_cmd_output([
             "/usr/sbin/ufw status",
             "/usr/sbin/ufw app list"

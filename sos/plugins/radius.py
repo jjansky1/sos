@@ -29,8 +29,9 @@ class RedHatRadius(Radius, RedHatPlugin):
         self.add_copy_spec([
             "/etc/raddb",
             "/etc/pam.d/radiusd",
-            "/var/log/radius"
-        ])
+        ], since=None)
+
+        self.add_copy_spec("/var/log/radius")
 
     def postproc(self):
         self.do_file_sub(
@@ -47,7 +48,8 @@ class DebianRadius(Radius, DebianPlugin, UbuntuPlugin):
             "/etc/freeradius",
             "/etc/pam.d/radiusd",
             "/etc/default/freeradius",
-            "/var/log/freeradius"
-        ])
+        ], since=None)
+
+        self.add_copy_spec("/var/log/freeradius")
 
 # vim: set et ts=4 sw=4 :

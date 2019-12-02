@@ -25,7 +25,7 @@ class Infiniband(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/etc/ofed/openib.conf",
             "/etc/ofed/opensm.conf",
             "/etc/rdma"
-        ])
+        ], since=None)
 
         self.add_copy_spec("/var/log/opensm*")
 

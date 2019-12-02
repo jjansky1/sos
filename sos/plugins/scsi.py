@@ -26,7 +26,7 @@ class Scsi(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
             "/sys/class/scsi_disk",
             "/sys/class/scsi_device",
             "/sys/class/scsi_generic"
-        ])
+        ], since=None)
 
         self.add_cmd_output("lsscsi -i", suggest_filename="lsscsi")
         self.add_cmd_output("sg_map -x")

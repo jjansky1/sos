@@ -21,14 +21,14 @@ class Azure(Plugin, UbuntuPlugin):
     packages = ('WALinuxAgent',)
 
     def setup(self):
+        self.add_copy_spec("/var/log/waagent*")
         self.add_copy_spec([
-            "/var/log/waagent*",
             "/var/lib/cloud",
             "/etc/default/kv-kvp-daemon-init",
             "/etc/waagent.conf",
             "/sys/module/hv_netvsc/parameters/ring_size",
             "/sys/module/hv_storvsc/parameters/storvsc_ringbuffer_size"
-        ])
+        ], since=None)
 
         # Adds all files under /var/log/azure to the sosreport
         # os.walk is used because /var/log/azure is used by multiple Azure

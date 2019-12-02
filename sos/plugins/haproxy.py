@@ -31,8 +31,8 @@ class HAProxy(Plugin, RedHatPlugin, DebianPlugin):
         self.add_copy_spec([
             "/etc/haproxy/haproxy.cfg",
             var_puppet_gen + "/etc/haproxy/haproxy.cfg"
-        ])
-        self.add_copy_spec("/etc/haproxy/conf.d/*")
+        ], since=None)
+        self.add_copy_spec("/etc/haproxy/conf.d/*", since=None)
         self.add_cmd_output("haproxy -f /etc/haproxy/haproxy.cfg -c")
 
         self.add_copy_spec("/var/log/haproxy.log")

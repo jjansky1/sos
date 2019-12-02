@@ -20,12 +20,12 @@ class RedHatAcpid(Acpid, RedHatPlugin):
     def setup(self):
         self.add_copy_spec([
             "/var/log/acpid*",
-            "/etc/acpi/events/power.conf"])
+            "/etc/acpi/events/power.conf"],since=None)
 
 
 class DebianAcpid(Acpid, DebianPlugin, UbuntuPlugin):
     def setup(self):
         self.add_copy_spec([
-            "/etc/acpi/events/powerbtn*"])
+            "/etc/acpi/events/powerbtn*"], since=None)
 
 # vim: set et ts=4 sw=4 :

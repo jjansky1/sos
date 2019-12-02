@@ -23,7 +23,7 @@ class Ntp(Plugin):
             "/etc/ntp.conf",
             "/etc/ntp/step-tickers",
             "/etc/ntp/ntpservers"
-        ])
+        ], since=None)
         self.add_cmd_output([
             "ntptime",
             "ntpq -pn"
@@ -39,7 +39,7 @@ class RedHatNtp(Ntp, RedHatPlugin):
 
     def setup(self):
         super(RedHatNtp, self).setup()
-        self.add_copy_spec("/etc/sysconfig/ntpd")
+        self.add_copy_spec("/etc/sysconfig/ntpd", since=None)
         self.add_cmd_output("ntpstat")
 
 
@@ -47,7 +47,7 @@ class DebianNtp(Ntp, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         super(DebianNtp, self).setup()
-        self.add_copy_spec('/etc/default/ntp')
+        self.add_copy_spec('/etc/default/ntp', since=None)
 
 
 # vim: set et ts=4 sw=4 :

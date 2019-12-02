@@ -22,7 +22,7 @@ class Ata(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
     def setup(self):
         dev_path = '/dev'
         sys_block = '/sys/block'
-        self.add_copy_spec('/proc/ide')
+        self.add_copy_spec('/proc/ide', since=None)
         if os.path.isdir(sys_block):
             for disk in os.listdir(sys_block):
                 if disk.startswith("sd") or disk.startswith("hd"):

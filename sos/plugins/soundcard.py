@@ -17,7 +17,7 @@ class Soundcard(Plugin):
     profiles = ('desktop', 'hardware')
 
     def setup(self):
-        self.add_copy_spec("/proc/asound/*")
+        self.add_copy_spec("/proc/asound/*", since=None)
         self.add_cmd_output([
             "aplay -l",
             "aplay -L",
@@ -33,7 +33,7 @@ class RedHatSoundcard(Soundcard, RedHatPlugin):
         self.add_copy_spec([
             "/etc/alsa/*",
             "/etc/asound.*"
-        ])
+        ], since=None)
 
 
 class DebianSoundcard(Soundcard, DebianPlugin, UbuntuPlugin):
@@ -41,6 +41,6 @@ class DebianSoundcard(Soundcard, DebianPlugin, UbuntuPlugin):
     def setup(self):
         super(DebianSoundcard, self).setup()
 
-        self.add_copy_spec("/etc/pulse/*")
+        self.add_copy_spec("/etc/pulse/*", since=None)
 
 # vim: set et ts=4 sw=4 :

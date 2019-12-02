@@ -129,16 +129,16 @@ class Kernel(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/proc/softirqs",
             "/proc/lock*",
             "/proc/misc",
-            "/var/log/dmesg",
             "/sys/fs/pstore",
             clocksource_path + "available_clocksource",
             clocksource_path + "current_clocksource"
-        ])
+        ], since=None)
+        self.add_copy_spec("/var/log/dmesg")
 
         if self.get_option("with-timer"):
             # This can be very slow, depending on the number of timers,
             # and may also cause softlockups
-            self.add_copy_spec("/proc/timer*")
+            self.add_copy_spec("/proc/timer*", since=None)
 
         if not self.get_option("trace"):
             self.add_forbidden_path("/sys/kernel/debug/tracing/trace")

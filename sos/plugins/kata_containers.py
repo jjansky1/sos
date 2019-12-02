@@ -43,7 +43,7 @@ class KataContainers(Plugin, RedHatPlugin, DebianPlugin,
                 if config != "":
                     config_files.add(config)
 
-            self.add_copy_spec(config_files)
+            self.add_copy_spec(config_files, since=None)
 
         self.add_journal(identifier='kata-proxy')
         self.add_journal(identifier='kata-shim')

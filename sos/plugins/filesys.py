@@ -33,7 +33,7 @@ class Filesys(Plugin, DebianPlugin, UbuntuPlugin):
             "/proc/[0-9]*/mountinfo",
             "/etc/mtab",
             "/etc/fstab"
-        ])
+        ], since=None)
         self.add_cmd_output("mount -l", root_symlink="mount")
         self.add_cmd_output("df -al -x autofs", root_symlink="df")
         self.add_cmd_output([

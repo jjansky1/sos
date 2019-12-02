@@ -46,7 +46,7 @@ class S390(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/etc/sysconfig/dumpconf",
             "/etc/src_vipa.conf",
             "/etc/ccwgroup.conf",
-            "/etc/chandev.conf"])
+            "/etc/chandev.conf"], since=None)
         self.add_cmd_output([
             "lscss",
             "lsdasd",

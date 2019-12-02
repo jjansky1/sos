@@ -22,7 +22,7 @@ class SysVIPC(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/proc/sysvipc/msg",
             "/proc/sysvipc/sem",
             "/proc/sysvipc/shm"
-        ])
+        ], since=None)
         self.add_cmd_output([
             "ipcs",
             "ipcs -u"

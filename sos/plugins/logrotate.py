@@ -27,6 +27,6 @@ class LogRotate(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/var/lib/logrotate/logrotate.status",
             self.var_puppet_gen + "/etc/logrotate-crond.conf",
             self.var_puppet_gen + "/var/spool/cron/root"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

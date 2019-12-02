@@ -28,11 +28,11 @@ class Tuned(Plugin, RedHatPlugin):
         self.add_copy_spec([
             "/etc/tuned.conf",
             "/etc/tune-profiles"
-        ])
+        ], since=None)
         self.add_copy_spec([
             "/etc/tuned",
-            "/usr/lib/tuned",
-            "/var/log/tuned/tuned.log"
-        ])
+            "/usr/lib/tuned"
+        ], since=None)
+        self.add_copy_spec("/var/log/tuned/tuned.log")
 
 # vim: set et ts=4 sw=4 :

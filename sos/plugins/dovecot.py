@@ -17,7 +17,7 @@ class Dovecot(Plugin):
     profiles = ('mail',)
 
     def setup(self):
-        self.add_copy_spec("/etc/dovecot*")
+        self.add_copy_spec(["/etc/dovecot*"], since=None)
         self.add_cmd_output("dovecot -n")
 
 

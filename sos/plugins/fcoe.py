@@ -28,6 +28,6 @@ class fcoe(Plugin, RedHatPlugin):
         ])
         # Here we grab information about the
         # interfaces's config files
-        self.add_copy_spec("/etc/fcoe")
+        self.add_copy_spec("/etc/fcoe", since=None)
 
 # vim: set et ts=4 sw=4 :

@@ -23,6 +23,6 @@ class Vsftpd(Plugin, RedHatPlugin):
         self.add_copy_spec([
             "/etc/ftp*",
             "/etc/vsftpd"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

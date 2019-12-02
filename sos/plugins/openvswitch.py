@@ -40,7 +40,7 @@ class OpenVSwitch(Plugin):
         self.add_copy_spec([
             "/run/openvswitch/ovsdb-server.pid",
             "/run/openvswitch/ovs-vswitchd.pid"
-        ])
+        ], since=None)
 
         self.add_cmd_output([
             # The '-s' option enables dumping of packet counters on the

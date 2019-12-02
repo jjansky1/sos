@@ -23,7 +23,7 @@ class Dlm(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
     def setup(self):
         self.add_copy_spec([
             "/etc/sysconfig/dlm"
-        ])
+        ], since=None)
         self.add_cmd_output([
             "dlm_tool log_plock",
             "dlm_tool dump",

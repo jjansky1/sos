@@ -23,7 +23,7 @@ class NetworkManager(Plugin, RedHatPlugin, UbuntuPlugin):
             "/etc/NetworkManager/NetworkManager.conf",
             "/etc/NetworkManager/system-connections",
             "/etc/NetworkManager/dispatcher.d"
-        ])
+        ], since=None)
 
         # There are some incompatible changes in nmcli since
         # the release of NetworkManager >= 0.9.9. In addition,

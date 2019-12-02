@@ -21,7 +21,7 @@ class Apparmor(Plugin, UbuntuPlugin):
     def setup(self):
         self.add_copy_spec([
             "/etc/apparmor*"
-        ])
+        ], since=None)
 
         self.add_forbidden_path([
             "/etc/apparmor.d/cache",

@@ -114,7 +114,7 @@ class Pacemaker(Plugin):
         # specified in the pacemaker start-up environment file.
         pattern = r'^\s*PCMK_logfile=[\'\"]?(\S+)[\'\"]?\s*(\s#.*)?$'
         if os.path.isfile(self.envfile):
-            self.add_copy_spec(self.envfile)
+            self.add_copy_spec(self.envfile, since=None)
             with open(self.envfile) as f:
                 for line in f:
                     if re.match(pattern, line):
@@ -142,7 +142,7 @@ class RedHatPacemaker(Pacemaker, RedHatPlugin):
     def setup(self):
         self.envfile = "/etc/sysconfig/pacemaker"
         self.setup_pcs()
-        self.add_copy_spec("/etc/sysconfig/sbd")
+        self.add_copy_spec("/etc/sysconfig/sbd", since=None)
         super(RedHatPacemaker, self).setup()
 
     def postproc(self):

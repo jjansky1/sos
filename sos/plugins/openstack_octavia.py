@@ -27,7 +27,7 @@ class OpenStackOctavia(Plugin):
             self.var_puppet_gen + "/etc/octavia/conf.d",
             self.var_puppet_gen + "/etc/octavia/octavia.conf",
             self.var_puppet_gen + "/etc/my.cnf.d/tripleo.cnf",
-        ])
+        ], since=None)
 
         # don't collect certificates
         self.add_forbidden_path("/etc/octavia/certs")

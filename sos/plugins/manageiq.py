@@ -78,11 +78,11 @@ class ManageIQ(Plugin, RedHatPlugin):
             # turn all log files to a glob to include logrotated ones
             self.miq_log_files = map(lambda x: x + '*', self.miq_log_files)
 
-        self.add_copy_spec(list(self.files))
+        self.add_copy_spec(list(self.files), since=None)
 
         self.add_copy_spec([
             os.path.join(self.miq_conf_dir, x) for x in self.miq_conf_files
-        ])
+        ], since=None)
 
         # Collect main log files without size limit.
         self.add_copy_spec([
@@ -94,15 +94,18 @@ class ManageIQ(Plugin, RedHatPlugin):
         ])
 
         self.add_copy_spec([
-            "/var/log/tower.log",
-            "/etc/manageiq/postgresql.conf.d/*.conf"
+            "/var/log/tower.log"
         ])
-
+        self.add_copy_spec([
+            "/etc/manageiq/postgresql.conf.d/*.conf"
+        ], since=None)
         if environ.get("APPLIANCE_PG_DATA"):
             pg_dir = environ.get("APPLIANCE_PG_DATA")
             self.add_copy_spec([
-                    os.path.join(pg_dir, 'pg_log'),
-                    os.path.join(pg_dir, 'postgresql.conf')
+                    os.path.join(pg_dir, 'pg_log')
             ])
+            self.add_copy_spec([
+                    os.path.join(pg_dir, 'postgresql.conf')
+            ], since=None)
 
 # vim: set et ts=4 sw=4 :

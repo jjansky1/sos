@@ -21,6 +21,6 @@ class SunRPC(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         self.add_cmd_output("rpcinfo -p localhost")
-        self.add_copy_spec('/sys/kernel/debug/sunrpc')
+        self.add_copy_spec('/sys/kernel/debug/sunrpc', since=None)
 
 # vim: set et ts=4 sw=4 :

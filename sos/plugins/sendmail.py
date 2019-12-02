@@ -20,7 +20,7 @@ class Sendmail(Plugin):
     packages = ('sendmail',)
 
     def setup(self):
-        self.add_copy_spec("/etc/mail/*")
+        self.add_copy_spec("/etc/mail/*", since=None)
         self.add_cmd_output([
             'mailq',
             'mailq -Ac'

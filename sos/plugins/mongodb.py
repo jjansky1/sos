@@ -28,12 +28,14 @@ class MongoDb(Plugin, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         self.add_copy_spec([
-            "/etc/mongodb.conf",
-            self.var_puppet_gen + "/etc/",
-            self.var_puppet_gen + "/etc/systemd/system/mongod.service.d/",
             "/var/log/mongodb/mongodb.log",
             "/var/lib/mongodb/mongodb.log*"
         ])
+        self.add_copy_spec([
+            "/etc/mongodb.conf",
+            self.var_puppet_gen + "/etc/",
+            self.var_puppet_gen + "/etc/systemd/system/mongod.service.d/"
+        ], since=None)
         self.add_cmd_output("du -sh /var/lib/mongodb/")
 
     def postproc(self):
@@ -64,8 +66,9 @@ class RedHatMongoDb(MongoDb, RedHatPlugin):
         self.add_copy_spec([
             "/etc/sysconfig/mongodb",
             "/etc/rh-mongodb*-mongo*.conf",
-            "/etc/opt/rh/rh-mongodb*/mongo*.conf",
+            "/etc/opt/rh/rh-mongodb*/mongo*.conf"
+        ], since=None)
+        self.add_copy_spec([
             "/var/opt/rh/rh-mongodb*/log/mongodb/mongod.log"
         ])
-
 # vim: set et ts=4 sw=4 :

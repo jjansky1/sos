@@ -31,12 +31,12 @@ class Yum(Plugin, RedHatPlugin):
 
     def setup(self):
         # Pull all yum related information
+        self.add_copy_spec("/var/log/yum.log")
         self.add_copy_spec([
             "/etc/yum",
             "/etc/yum.repos.d",
-            "/etc/yum.conf",
-            "/var/log/yum.log"
-        ])
+            "/etc/yum.conf"
+        ], since=None)
 
         # Get a list of channels the machine is subscribed to.
         self.add_cmd_output("yum -C repolist")
@@ -56,7 +56,7 @@ class Yum(Plugin, RedHatPlugin):
                 plugnames = "%s\n" % "\n".join(plugnames)
                 self.add_string_as_file(plugnames, "plugin-names")
 
-        self.add_copy_spec("/etc/yum/pluginconf.d")
+        self.add_copy_spec("/etc/yum/pluginconf.d", since=None)
 
         # candlepin info
         self.add_forbidden_path([
@@ -68,7 +68,7 @@ class Yum(Plugin, RedHatPlugin):
             "/etc/pki/product/*.pem",
             "/etc/pki/consumer/cert.pem",
             "/etc/pki/entitlement/*.pem"
-        ])
+        ], since=None)
 
         self.add_cmd_output([
             "yum history",

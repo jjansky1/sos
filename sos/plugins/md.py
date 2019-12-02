@@ -24,7 +24,7 @@ class Md(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/dev/md/md-device-map",
             "/proc/sys/dev/raid/*",
             "/sys/block/md*/md*"
-        ])
+        ], since=None)
 
 
 # vim: set et ts=4 sw=4 :

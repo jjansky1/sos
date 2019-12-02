@@ -19,7 +19,7 @@ class DockerDistribution(Plugin):
     profiles = ('container',)
 
     def setup(self):
-        self.add_copy_spec('/etc/docker-distribution/')
+        self.add_copy_spec(['/etc/docker-distribution/'], since=None)
         self.add_journal('docker-distribution')
         if os.path.exists('/etc/docker-distribution/registry/config.yml'):
             with open('/etc/docker-distribution/registry/config.yml') as f:

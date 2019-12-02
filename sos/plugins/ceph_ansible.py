@@ -23,7 +23,7 @@ class CephAnsible(Plugin, RedHatPlugin, DebianPlugin):
             "/usr/share/ceph-ansible/group_vars/",
             "/usr/share/ceph-ansible/site*.yml",
             "/usr/share/ceph-ansible/ansible.cfg"
-        ])
+        ], since=None)
 
         self.add_forbidden_path("/usr/share/ceph-ansible/group_vars/*.sample")
 

@@ -114,20 +114,23 @@ class Ovirt(Plugin, RedHatPlugin):
             "/etc/rhevm/",
             "/etc/ovirt-engine-dwh",
             "/etc/ovirt-engine-reports",
-            "/var/log/ovirt-engine",
-            "/var/log/ovirt-engine-dwh",
-            "/var/log/ovirt-engine-reports",
-            "/var/log/ovirt-scheduler-proxy",
-            "/var/log/rhevm",
             "/etc/sysconfig/ovirt-engine",
             "/usr/share/ovirt-engine/conf",
-            "/var/log/ovirt-guest-agent",
             "/var/lib/ovirt-engine/setup-history.txt",
             "/var/lib/ovirt-engine/setup/answers",
             "/var/lib/ovirt-engine/external_truststore",
             "/var/tmp/ovirt-engine/config",
             "/var/lib/ovirt-engine/jboss_runtime/config",
             "/var/lib/ovirt-engine-reports/jboss_runtime/config"
+        ], since=None)
+
+        self.add_copy_spec([
+            "/var/log/ovirt-engine",
+            "/var/log/ovirt-engine-dwh",
+            "/var/log/ovirt-engine-reports",
+            "/var/log/ovirt-scheduler-proxy",
+            "/var/log/rhevm",
+            "/var/log/ovirt-guest-agent",
         ])
 
         # Copying host certs.
@@ -136,7 +139,7 @@ class Ovirt(Plugin, RedHatPlugin):
             "/etc/pki/ovirt-engine/private",
             "/etc/pki/ovirt-engine/.truststore"
         ])
-        self.add_copy_spec("/etc/pki/ovirt-engine/")
+        self.add_copy_spec("/etc/pki/ovirt-engine/", since=None)
 
     def postproc(self):
         """

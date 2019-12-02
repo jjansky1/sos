@@ -35,7 +35,7 @@ class OpenStackKeystone(Plugin):
             self.var_puppet_gen + "/etc/httpd/conf.modules.d/*.conf",
             self.var_puppet_gen + "/var/spool/cron/",
             self.var_puppet_gen + "/etc/my.cnf.d/tripleo.cnf"
-        ])
+        ], since=None)
 
         if self.get_option("all_logs"):
             self.add_copy_spec([
@@ -55,7 +55,7 @@ class OpenStackKeystone(Plugin):
         if exec_out['status'] != 0 or \
                 not(os.path.isdir(self.domain_config_dir)):
             self.domain_config_dir = "/etc/keystone/domains"
-        self.add_copy_spec(self.domain_config_dir)
+        self.add_copy_spec(self.domain_config_dir, since=None)
 
         vars_all = [p in os.environ for p in [
                     'OS_USERNAME', 'OS_PASSWORD']]

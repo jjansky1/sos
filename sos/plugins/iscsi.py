@@ -25,7 +25,7 @@ class Iscsi(Plugin):
             "/etc/iscsi/initiatorname.iscsi",
             var_puppet_gen + "/etc/iscsi/initiatorname.iscsi",
             "/var/lib/iscsi"
-        ])
+        ], since=None)
         self.add_cmd_output([
             "iscsiadm -m session -P 3",
             "iscsiadm -m node -P 1",

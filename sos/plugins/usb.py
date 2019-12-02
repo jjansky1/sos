@@ -17,7 +17,7 @@ class Usb(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
     profiles = ('hardware',)
 
     def setup(self):
-        self.add_copy_spec("/sys/bus/usb")
+        self.add_copy_spec("/sys/bus/usb", since=None)
 
         self.add_cmd_output([
             "lsusb",

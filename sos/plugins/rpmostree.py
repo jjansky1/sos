@@ -18,7 +18,7 @@ class Rpmostree(Plugin, RedHatPlugin):
     packages = ('rpm-ostree',)
 
     def setup(self):
-        self.add_copy_spec('/etc/ostree/remotes.d/')
+        self.add_copy_spec('/etc/ostree/remotes.d/', since=None)
 
         subcmds = [
             'status',

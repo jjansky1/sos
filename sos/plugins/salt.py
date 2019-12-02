@@ -26,7 +26,7 @@ class Salt(Plugin, RedHatPlugin, DebianPlugin):
         else:
             self.add_copy_spec("/var/log/salt")
 
-        self.add_copy_spec("/etc/salt")
+        self.add_copy_spec("/etc/salt", since=None)
         self.add_forbidden_path("/etc/salt/pki/*/*.pem")
 
 # vim: set et ts=4 sw=4 :

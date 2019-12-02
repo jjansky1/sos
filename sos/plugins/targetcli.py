@@ -25,7 +25,7 @@ class TargetCli(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         ])
         self.add_service_status("target")
         self.add_journal(units="targetcli")
-        self.add_copy_spec("/sys/kernel/config/target")
-        self.add_copy_spec("/etc/target")
+        self.add_copy_spec("/sys/kernel/config/target", since=None)
+        self.add_copy_spec("/etc/target", since=None)
 
 # vim: set et ts=4 sw=4 :

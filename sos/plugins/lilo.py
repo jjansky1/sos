@@ -18,7 +18,7 @@ class Lilo(Plugin, RedHatPlugin, UbuntuPlugin):
     packages = ('lilo',)
 
     def setup(self):
-        self.add_copy_spec("/etc/lilo.conf")
+        self.add_copy_spec("/etc/lilo.conf", since=None)
         self.add_cmd_output("lilo -q")
 
 # vim: set et ts=4 sw=4 :

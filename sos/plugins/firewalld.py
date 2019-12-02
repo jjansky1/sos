@@ -28,9 +28,10 @@ class FirewallD(Plugin, RedHatPlugin):
             "/etc/firewalld/icmptypes/*.xml",
             "/etc/firewalld/services/*.xml",
             "/etc/firewalld/zones/*.xml",
-            "/etc/sysconfig/firewalld",
-            "/var/log/firewalld",
-        ])
+            "/etc/sysconfig/firewalld"
+        ], since=None)
+
+        self.add_copy_spec("/var/log/firewalld")
 
         # collect nftables ruleset
         self.add_cmd_output("nft list ruleset")

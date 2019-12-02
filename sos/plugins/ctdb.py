@@ -24,6 +24,9 @@ class Ctdb(Plugin, DebianPlugin, UbuntuPlugin):
             "/etc/ctdb/public_addresses",
             "/etc/ctdb/static-routes",
             "/etc/ctdb/multipathd",
+        ], since=None)
+
+        self.add_copy_spec([
             "/var/log/log.ctdb"
         ])
 
@@ -42,6 +45,6 @@ class Ctdb(Plugin, DebianPlugin, UbuntuPlugin):
 class RedHatCtdb(Ctdb, RedHatPlugin):
     def setup(self):
         super(RedHatCtdb, self).setup()
-        self.add_copy_spec("/etc/sysconfig/ctdb")
+        self.add_copy_spec(["/etc/sysconfig/ctdb"], since=None)
 
 # vim: set et ts=4 sw=4 :

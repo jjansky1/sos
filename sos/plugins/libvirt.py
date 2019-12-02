@@ -43,7 +43,7 @@ class Libvirt(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
             "/etc/libvirt/storage/autostart/*.xml",
             "/etc/libvirt/qemu-lockd.conf",
             "/etc/libvirt/virtlockd.conf"
-        ])
+        ], since=None)
 
         if not self.get_option("all_logs"):
             self.add_copy_spec([
@@ -64,7 +64,7 @@ class Libvirt(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
         for pidfile in glob.glob("/run/libvirt/*/*.pid"):
             pid = open(pidfile).read().splitlines()[0]
             for pf in ["environ", "cgroup", "maps", "numa_maps", "limits"]:
-                self.add_copy_spec("/proc/%s/%s" % (pid, pf))
+                self.add_copy_spec("/proc/%s/%s" % (pid, pf), since=None)
 
     def postproc(self):
         match_exp = r"(\s*passwd=\s*')([^']*)('.*)"

@@ -22,7 +22,7 @@ class Pam(Plugin):
         self.add_copy_spec([
             "/etc/pam.d",
             "/etc/security"
-        ])
+        ], since=None)
         self.add_cmd_output([
             "ls -lanF %s" % self.security_libs,
             "pam_tally2",

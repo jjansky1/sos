@@ -22,7 +22,7 @@ class Dracut(Plugin, RedHatPlugin):
         self.add_copy_spec([
             "/etc/dracut.conf",
             "/etc/dracut.conf.d"
-        ])
+        ], since=None)
 
         self.add_cmd_output([
             "dracut --list-modules",

@@ -26,7 +26,9 @@ class Krb5(Plugin):
             "/etc/krb5.conf",
             "/etc/krb5.conf.d/*",
             "%s/kadm5.acl" % self.kdcdir,
-            "%s/kdc.conf" % self.kdcdir,
+            "%s/kdc.conf" % self.kdcdir
+        ], since=None)
+        self.add_copy_spec([
             "/var/log/krb5kdc.log",
             "/var/log/kadmind.log"
         ])

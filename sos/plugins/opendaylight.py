@@ -24,7 +24,7 @@ class OpenDaylight(Plugin, RedHatPlugin):
         self.add_copy_spec([
             "/opt/opendaylight/etc/",
             self.var_puppet_gen + "/opt/opendaylight/etc/",
-        ])
+        ], since=None)
 
         if self.get_option("all_logs"):
 

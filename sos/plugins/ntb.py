@@ -23,7 +23,7 @@ class Ntb(Plugin, RedHatPlugin):
         self.add_copy_spec([
             '/sys/kernel/debug/ntb_hw_intel/0000:*/info',
             '/sys/kernel/debug/ntb_transport/0000:*/qp*/stats'
-        ])
+        ], since=None)
 
 
 # vim: set et ts=4 sw=4 :

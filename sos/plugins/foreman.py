@@ -76,15 +76,10 @@ class Foreman(Plugin):
         self.add_copy_spec([
             "/var/log/foreman/production.log",
             "/var/log/{}*/foreman-ssl_*_ssl.log".format(self.apachepkg)
-        ], sizelimit=0)
+        ], sizelimit=0, since=None)
 
         # Allow limiting these
         self.add_copy_spec([
-            "/etc/foreman/",
-            "/etc/foreman-proxy/",
-            "/etc/sysconfig/foreman",
-            "/etc/default/foreman",
-            "/etc/foreman-installer/",
             "/var/log/foreman/dynflow_executor*log*",
             "/var/log/foreman/dynflow_executor*.output*",
             "/var/log/foreman/apipie_cache*.log*",
@@ -109,19 +104,27 @@ class Foreman(Plugin):
             "/var/log/tomcat*/localhost*log*",
             "/var/log/tomcat*/manager*log*",
             "/usr/share/foreman/Gemfile*",
-            "/var/lib/puppet/ssl/certs/ca.pem",
-            "/etc/puppetlabs/puppet/ssl/certs/ca.pem",
-            "/etc/puppetlabs/puppet/ssl/certs/{}.pem".format(_hostname),
-            "/var/lib/puppet/ssl/certs/{}.pem".format(_hostname),
             "/var/log/{}*/foreman-ssl_*_ssl*log[.-]*".format(self.apachepkg),
             "/var/log/{}*/katello-reverse-proxy_access_ssl.log*".format(
                 self.apachepkg),
             "/var/log/{}*/katello-reverse-proxy_error_ssl.log*".format(
                 self.apachepkg),
-            "/var/log/{}*/error_log*".format(self.apachepkg),
+            "/var/log/{}*/error_log*".format(self.apachepkg)
+        ])
+
+        self.add_copy_spec([
+            "/etc/foreman/",
+            "/etc/foreman-proxy/",
+            "/etc/sysconfig/foreman",
+            "/etc/default/foreman",
+            "/etc/foreman-installer/",
+            "/var/lib/puppet/ssl/certs/ca.pem",
+            "/etc/puppetlabs/puppet/ssl/certs/ca.pem",
+            "/etc/puppetlabs/puppet/ssl/certs/{}.pem".format(_hostname),
+            "/var/lib/puppet/ssl/certs/{}.pem".format(_hostname),
             "/etc/{}*/conf/".format(self.apachepkg),
             "/etc/{}*/conf.d/".format(self.apachepkg)
-        ])
+        ], since=None)
 
         self.add_cmd_output([
             'bundle --local --gemfile=/usr/share/foreman/Gemfile*',

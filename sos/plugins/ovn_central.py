@@ -85,10 +85,10 @@ class OVNCentral(Plugin):
                 os.path.join('/var/lib/openvswitch/ovn', pidfile),
                 os.path.join('/usr/local/var/run/openvswitch', pidfile),
                 os.path.join('/run/openvswitch/', pidfile),
-            ])
+            ], since=None)
 
             if ovs_rundir:
-                self.add_copy_spec(os.path.join(ovs_rundir, pidfile))
+                self.add_copy_spec(os.path.join(ovs_rundir, pidfile), since=None)
 
         # Some user-friendly versions of DB output
         cmds = [
@@ -120,7 +120,7 @@ class OVNCentral(Plugin):
 
         self.add_cmd_output(cmds)
 
-        self.add_copy_spec("/etc/sysconfig/ovn-northd")
+        self.add_copy_spec("/etc/sysconfig/ovn-northd", since=None)
 
         ovs_dbdir = os.environ.get('OVS_DBDIR')
         for dbfile in ['ovnnb_db.db', 'ovnsb_db.db']:
@@ -129,9 +129,9 @@ class OVNCentral(Plugin):
                 os.path.join('/usr/local/etc/openvswitch', dbfile),
                 os.path.join('/etc/openvswitch', dbfile),
                 os.path.join('/var/lib/openvswitch', dbfile),
-            ])
+            ], since=None)
             if ovs_dbdir:
-                self.add_copy_spec(os.path.join(ovs_dbdir, dbfile))
+                self.add_copy_spec(os.path.join(ovs_dbdir, dbfile), since=None)
 
         self.add_journal(units="ovn-northd")
 

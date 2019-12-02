@@ -23,10 +23,11 @@ class SubscriptionManager(Plugin, RedHatPlugin):
     def setup(self):
         # rhsm config and logs
         self.add_copy_spec([
-            "/etc/rhsm/",
-            "/var/lib/rhsm/",
             "/var/log/rhsm/rhsm.log",
-            "/var/log/rhsm/rhsmcertd.log"])
+            "/var/log/rhsm/rhsmcertd.log"]) 
+        self.add_copy_spec([
+            "/etc/rhsm/",
+            "/var/lib/rhsm/"], since=None)
         self.add_cmd_output([
             "subscription-manager list --installed",
             "subscription-manager list --available",

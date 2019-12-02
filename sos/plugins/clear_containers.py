@@ -42,7 +42,7 @@ class ClearContainers(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin,
         # get a unique list of config files
         config_files = set(config_files)
 
-        self.add_copy_spec(config_files)
+        self.add_copy_spec(config_files, since=None)
 
     def attach_cc_log_files(self):
         # start with the default global log

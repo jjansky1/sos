@@ -26,8 +26,8 @@ class Apport(Plugin, DebianPlugin, UbuntuPlugin):
             ])
         else:
             self.add_copy_spec("/var/log/apport*")
-        self.add_copy_spec("/etc/apport/*")
-        self.add_copy_spec("/var/lib/whoopsie/whoopsie-id")
+        self.add_copy_spec("/etc/apport/*", since=None)
+        self.add_copy_spec("/var/lib/whoopsie/whoopsie-id", since=None)
         self.add_cmd_output(
             "gdbus call -y -d com.ubuntu.WhoopsiePreferences \
             -o /com/ubuntu/WhoopsiePreferences \

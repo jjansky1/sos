@@ -22,9 +22,10 @@ class Cron(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
     def setup(self):
         self.add_copy_spec([
             "/etc/cron*",
-            "/var/log/cron",
             "/var/spool/cron"
-        ])
+        ], since=None)
+
+        self.add_copy_spec(["/var/log/cron"])
 
         if self.get_option("all_logs"):
             self.add_copy_spec("/var/log/cron*")

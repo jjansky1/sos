@@ -22,7 +22,7 @@ class Ansible(Plugin, RedHatPlugin, UbuntuPlugin):
     )
 
     def setup(self):
-        self.add_copy_spec("/etc/ansible/")
+        self.add_copy_spec("/etc/ansible/", since=None)
 
         self.add_cmd_output([
             "ansible all -m ping -vvvv",

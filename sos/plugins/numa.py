@@ -25,7 +25,7 @@ class Numa(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/numad.conf",
             "/etc/logrotate.d/numad"
-        ])
+        ], since=None)
         self.add_copy_spec("/var/log/numad.log*")
         self.add_cmd_output([
             "numastat",
@@ -40,6 +40,6 @@ class Numa(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             os.path.join(numa_path, "node*/meminfo"),
             os.path.join(numa_path, "node*/cpulist"),
             os.path.join(numa_path, "node*/distance")
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

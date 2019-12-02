@@ -22,7 +22,7 @@ class Nscd(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
     packages = ('nscd',)
 
     def setup(self):
-        self.add_copy_spec("/etc/nscd.conf")
+        self.add_copy_spec("/etc/nscd.conf", since=None)
 
         opt = self.file_grep(r"^\s*logfile", "/etc/nscd.conf")
         if (len(opt) > 0):

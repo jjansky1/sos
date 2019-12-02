@@ -22,11 +22,12 @@ class Sssd(Plugin):
     def setup(self):
         self.add_copy_spec([
             "/etc/sssd/sssd.conf",
-            "/var/log/sssd/*",
             "/var/lib/sss/pubconf/krb5.include.d/*",
             # SSSD 1.14
             "/etc/sssd/conf.d/*.conf"
-        ])
+        ], since=None)
+
+        self.add_copy_spec("/var/log/sssd/*")
 
         self.add_cmd_output("sssctl config-check")
 
@@ -52,6 +53,6 @@ class DebianSssd(Sssd, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         super(DebianSssd, self).setup()
-        self.add_copy_spec("/etc/default/sssd")
+        self.add_copy_spec("/etc/default/sssd", since=None)
 
 # vim: set et ts=4 sw=4 :

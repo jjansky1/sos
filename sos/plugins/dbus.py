@@ -20,7 +20,7 @@ class Dbus(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/dbus-1",
             "/var/lib/dbus/machine-id"
-        ])
+        ], since=None)
 
         self.add_cmd_output([
             "busctl list --no-pager",

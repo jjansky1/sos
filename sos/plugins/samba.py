@@ -21,7 +21,7 @@ class Samba(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/samba/smb.conf",
             "/etc/samba/lmhosts",
-        ])
+        ], since=None)
 
         self.add_copy_spec("/var/log/samba/log.smbd")
         self.add_copy_spec("/var/log/samba/log.nmbd")
@@ -46,6 +46,6 @@ class RedHatSamba(Samba, RedHatPlugin):
 
     def setup(self):
         super(RedHatSamba, self).setup()
-        self.add_copy_spec("/etc/sysconfig/samba")
+        self.add_copy_spec("/etc/sysconfig/samba", since=None)
 
 # vim: set et ts=4 sw=4 :

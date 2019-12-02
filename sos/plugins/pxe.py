@@ -26,9 +26,9 @@ class RedHatPxe(Pxe, RedHatPlugin):
     def setup(self):
         super(RedHatPxe, self).setup()
         self.add_cmd_output("/usr/sbin/pxeos -l")
-        self.add_copy_spec("/etc/dhcpd.conf")
+        self.add_copy_spec("/etc/dhcpd.conf", since=None)
         if self.get_option("tftpboot"):
-            self.add_copy_spec("/tftpboot")
+            self.add_copy_spec("/tftpboot", since=None)
 
 
 class DebianPxe(Pxe, DebianPlugin, UbuntuPlugin):
@@ -40,8 +40,8 @@ class DebianPxe(Pxe, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/dhcp/dhcpd.conf",
             "/etc/default/tftpd-hpa"
-        ])
+        ], since=None)
         if self.get_option("tftpboot"):
-            self.add_copy_spec("/var/lib/tftpboot")
+            self.add_copy_spec("/var/lib/tftpboot", since=None)
 
 # vim: set et ts=4 sw=4 :

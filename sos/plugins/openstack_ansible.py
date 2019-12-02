@@ -25,7 +25,7 @@ class OpenStackAnsible(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/etc/openstack-release",
             "/etc/rpc_deploy/",
             "/etc/rpc-release"
-        ])
+        ], since=None)
 
     def postproc(self):
         """Remove sensitive keys and passwords from YAML files."""

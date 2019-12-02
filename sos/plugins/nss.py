@@ -25,6 +25,6 @@ class NSS(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/etc/pki/nssdb/secmod.db"
         ])
 
-        self.add_copy_spec("/etc/pki/nssdb/pkcs11.txt")
+        self.add_copy_spec("/etc/pki/nssdb/pkcs11.txt", since=None)
 
 # vim: set et ts=4 sw=4 :

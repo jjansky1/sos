@@ -20,16 +20,14 @@ class Named(Plugin):
     config_files = named_conf
 
     def setup(self):
-        self.add_copy_spec([
-            "/etc/default/bind",
-            "/var/log/named*.log"
-        ])
+        self.add_copy_spec("/etc/default/bind", since=None)
+        self.add_copy_spec("/var/log/named*.log")
         for cfg in self.config_files:
             if exists(cfg):
                 self.add_copy_spec([
                     cfg,
                     self.get_dns_dir(cfg)
-                ])
+                ], since=None)
                 self.add_forbidden_path([
                     join(self.get_dns_dir(cfg), "chroot/dev"),
                     join(self.get_dns_dir(cfg), "chroot/proc")
@@ -61,8 +59,8 @@ class RedHatNamed(Named, RedHatPlugin):
 
     def setup(self):
         super(RedHatNamed, self).setup()
-        self.add_copy_spec("/etc/named/")
-        self.add_copy_spec("/etc/sysconfig/named")
+        self.add_copy_spec("/etc/named/", since=None)
+        self.add_copy_spec("/etc/sysconfig/named", since=None)
         self.add_cmd_output("klist -ket /etc/named.keytab")
         self.add_forbidden_path("/etc/named.keytab")
         return
@@ -79,7 +77,7 @@ class DebianNamed(Named, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         super(DebianNamed, self).setup()
-        self.add_copy_spec("/etc/bind/")
+        self.add_copy_spec("/etc/bind/", since=None)
         return
 
 

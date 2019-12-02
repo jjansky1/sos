@@ -25,6 +25,6 @@ class Ptp(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/etc/ptp4l.conf",
             "/etc/timemaster.conf",
             "/sys/class/ptp"
-        ])
+        ], since=None)
 
 # vim: et ts=4 sw=4

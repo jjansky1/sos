@@ -26,6 +26,6 @@ class Oddjob(Plugin, RedHatPlugin):
             "/etc/oddjobd.conf",
             "/etc/oddjobd.conf.d",
             "/etc/dbus-1/system.d/oddjob.conf"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

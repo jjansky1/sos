@@ -25,6 +25,6 @@ class Xinetd(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/xinetd.conf",
             "/etc/xinetd.d"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

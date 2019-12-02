@@ -101,10 +101,10 @@ class OpenShiftOrigin(Plugin):
                 self.master_cfg,
                 self.master_env,
                 os.path.join(self.master_base_dir, "*.crt"),
-            ])
+            ], since=None)
 
             if self.is_static_pod_compatible():
-                self.add_copy_spec(os.path.join(self.static_pod_dir, "*.yaml"))
+                self.add_copy_spec(os.path.join(self.static_pod_dir, "*.yaml"), since=None)
                 self.add_cmd_output([
                     "%s api api" % static_pod_logs_cmd,
                     "%s controllers controllers" % static_pod_logs_cmd,
@@ -191,7 +191,7 @@ class OpenShiftOrigin(Plugin):
                 os.path.join(self.node_base_dir, "*.crt"),
                 os.path.join(self.node_base_dir, "resolv.conf"),
                 os.path.join(self.node_base_dir, "node-dnsmasq.conf"),
-            ])
+            ], since=None)
 
             self.add_journal(units="atomic-openshift-node")
 

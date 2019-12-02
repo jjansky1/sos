@@ -23,8 +23,8 @@ class RedHatSquid(Squid, RedHatPlugin):
     packages = ('squid',)
 
     def setup(self):
+        self.add_copy_spec("/etc/squid/squid.conf", since=None)
         self.add_copy_spec([
-            "/etc/squid/squid.conf",
             "/var/log/squid/access.log*",
             "/var/log/squid/cache.log*",
             "/var/log/squid/squid.out*"
@@ -38,9 +38,9 @@ class DebianSquid(Squid, DebianPlugin, UbuntuPlugin):
     packages = ('squid3',)
 
     def setup(self):
-        self.add_copy_spec("/etc/squid3/squid.conf")
+        self.add_copy_spec("/etc/squid3/squid.conf", since=None)
         self.add_copy_spec("/var/log/squid3/*")
-        self.add_copy_spec('/etc/squid-deb-proxy')
+        self.add_copy_spec('/etc/squid-deb-proxy', since=None)
         self.add_copy_spec("/var/log/squid-deb-proxy/*")
 
 # vim: set et ts=4 sw=4 :

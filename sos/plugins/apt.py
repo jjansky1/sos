@@ -21,7 +21,7 @@ class Apt(Plugin, DebianPlugin, UbuntuPlugin):
     def setup(self):
         self.add_copy_spec([
             "/etc/apt", "/var/log/apt"
-        ])
+        ], since=None)
 
         self.add_forbidden_path("/etc/apt/auth.conf")
 

@@ -29,7 +29,7 @@ class Kvm(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/sys/module/kvm_intel/srcversion",
             "/sys/module/kvm_amd/srcversion",
             "/sys/module/ksm/srcversion"
-        ])
+        ], since=None)
 
         self.add_cmd_output("kvm_stat --once")
 

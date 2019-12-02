@@ -19,8 +19,8 @@ class X11(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
     files = ('/etc/X11',)
 
     def setup(self):
+        self.add_copy_spec("/etc/X11", since=None)
         self.add_copy_spec([
-            "/etc/X11",
             "/var/log/Xorg.*.log",
             "/var/log/Xorg.*.log.old",
             "/var/log/XFree86.*.log",

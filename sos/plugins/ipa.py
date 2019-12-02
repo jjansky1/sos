@@ -99,11 +99,6 @@ class Ipa(Plugin, RedHatPlugin):
             self.retrieve_pki_logs(ipa_version)
 
         self.add_copy_spec([
-            "/var/log/ipaclient-install.log",
-            "/var/log/ipaupgrade.log",
-            "/var/log/krb5kdc.log",
-            "/var/log/dirsrv/slapd-*/logs/access",
-            "/var/log/dirsrv/slapd-*/logs/errors",
             "/etc/dirsrv/slapd-*/dse.ldif",
             "/etc/dirsrv/slapd-*/schema/99user.ldif",
             "/etc/hosts",
@@ -114,16 +109,23 @@ class Ipa(Plugin, RedHatPlugin):
             "/etc/ipa/kdcproxy/kdcproxy.conf",
             "/etc/ipa/kdcproxy/ipa-kdc-proxy.conf",
             "/etc/ipa/kdcproxy.conf",
-            "/root/.ipa/log/cli.log",
             "/var/lib/certmonger/requests/[0-9]*",
             "/var/lib/certmonger/cas/[0-9]*",
             "/var/lib/ipa/ra-agent.pem",
             "/var/lib/ipa/certs/httpd.crt",
             "/var/kerberos/krb5kdc/kdc.crt",
-            "/var/lib/ipa/sysrestore/sysrestore.state",
+            "/var/lib/ipa/sysrestore/sysrestore.state"
+        ], since=None)
+
+        self.add_copy_spec([
+            "/var/log/ipaclient-install.log",
+            "/var/log/ipaupgrade.log",
+            "/var/log/krb5kdc.log",
+            "/var/log/dirsrv/slapd-*/logs/access",
+            "/var/log/dirsrv/slapd-*/logs/errors",
+            "/root/.ipa/log/cli.log",
             "/var/log/ipa/healthcheck/healthcheck.log*"
         ])
-
         #  Make sure to use the right PKI config and NSS DB folders
         if ipa_version == "v4":
             self.pki_tomcat_dir = self.pki_tomcat_dir_v4
@@ -133,7 +135,7 @@ class Ipa(Plugin, RedHatPlugin):
             self.pki_tomcat_conf_dir = self.pki_tomcat_conf_dir_v3
 
         self.add_cmd_output("certutil -L -d %s/alias" % self.pki_tomcat_dir)
-        self.add_copy_spec("%s/CS.cfg" % self.pki_tomcat_conf_dir)
+        self.add_copy_spec("%s/CS.cfg" % self.pki_tomcat_conf_dir, since=None)
 
         self.add_forbidden_path([
             "/etc/pki/nssdb/key*",

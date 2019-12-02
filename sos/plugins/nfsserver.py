@@ -43,7 +43,7 @@ class NfsServer(Plugin, RedHatPlugin):
             "/var/lib/nfs/etab",
             "/var/lib/nfs/xtab",
             "/var/lib/nfs/rmtab"
-        ])
+        ], since=None)
 
         self.add_cmd_output([
             "rpcinfo -p localhost",

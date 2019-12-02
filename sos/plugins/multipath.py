@@ -20,7 +20,7 @@ class Multipath(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/multipath/",
             "/etc/multipath.conf"
-        ])
+        ], since=None)
         self.add_cmd_output([
             "multipath -ll",
             "multipath -v4 -ll",

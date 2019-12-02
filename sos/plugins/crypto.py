@@ -24,7 +24,7 @@ class Crypto(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/proc/sys/crypto/fips_enabled",
             "/etc/system-fips",
             "/etc/crypto-policies/*"
-        ])
+        ], since=None)
 
         self.add_cmd_output([
             "fips-mode-setup --check",

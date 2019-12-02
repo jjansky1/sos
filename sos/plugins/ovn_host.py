@@ -29,9 +29,9 @@ class OVNHost(Plugin):
     def setup(self):
         if os.environ.get('OVS_RUNDIR'):
             pid_paths.append(os.environ.get('OVS_RUNDIR'))
-        self.add_copy_spec([os.path.join(pp, pidfile) for pp in pid_paths])
+        self.add_copy_spec([os.path.join(pp, pidfile) for pp in pid_paths], since=None)
 
-        self.add_copy_spec('/etc/sysconfig/ovn-controller')
+        self.add_copy_spec('/etc/sysconfig/ovn-controller', since=None)
 
         self.add_cmd_output([
             'ovs-ofctl -O OpenFlow13 dump-flows br-int',

@@ -25,7 +25,7 @@ class Keyutils(Plugin, RedHatPlugin):
             "/etc/request-key.conf",
             "/etc/request-key.d",
             "/proc/key-users"
-        ])
+        ], since=None)
         self.add_cmd_output("keyctl show")
 
 # vim: set et ts=4 sw=4 :

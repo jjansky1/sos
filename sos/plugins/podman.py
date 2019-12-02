@@ -34,7 +34,7 @@ class Podman(Plugin, RedHatPlugin, UbuntuPlugin):
             "/etc/containers/storage.conf",
             "/etc/containers/mounts.conf",
             "/etc/containers/policy.json",
-        ])
+        ], since=None)
 
         self.add_env_var([
             'HTTP_PROXY',

@@ -23,7 +23,7 @@ class System(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/etc/sysconfig",
             "/etc/default",
             "/etc/environment",
-        ])
+        ], since=None)
 
         # FIXME: provide a a long-term solution for #1299
         self.add_forbidden_path([

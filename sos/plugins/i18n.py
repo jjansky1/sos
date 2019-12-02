@@ -20,7 +20,7 @@ class I18n(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/X11/xinit/xinput.d/*",
             "/etc/locale.conf"
-        ])
+        ], since=None)
         self.add_cmd_output("locale", env={'LC_ALL': None})
 
 # vim: set et ts=4 sw=4 :

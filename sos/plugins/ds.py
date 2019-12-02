@@ -61,12 +61,19 @@ class DirectoryServer(Plugin, RedHatPlugin):
                 "/etc/dirsrv/slapd*/dse.ldif.startOK",
                 "/etc/dirsrv/slapd*/secmod.db",
                 "/etc/dirsrv/slapd*/schema/*.ldif",
-                "/etc/dirsrv/admin-serv",
+                "/etc/dirsrv/admin-serv"
+            ], since=None)
+
+            self.add_copy_spec([
                 "/var/log/dirsrv/*"
             ])
+
         elif "ds7" in self.check_version():
             self.add_copy_spec([
-                "/opt/redhat-ds/slapd-*/config",
+                "/opt/redhat-ds/slapd-*/config"
+            ], since=None)
+
+            self.add_copy_spec([
                 "/opt/redhat-ds/slapd-*/logs"
             ])
 

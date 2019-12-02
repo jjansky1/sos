@@ -62,9 +62,7 @@ class CertificateSystem(Plugin, RedHatPlugin):
             self.add_copy_spec([
                 "/opt/redhat-cs/slapd-*/logs/access",
                 "/opt/redhat-cs/slapd-*/logs/errors",
-                "/opt/redhat-cs/slapd-*/config/dse.ldif",
                 "/opt/redhat-cs/cert-*/errors",
-                "/opt/redhat-cs/cert-*/config/CS.cfg",
                 "/opt/redhat-cs/cert-*/access",
                 "/opt/redhat-cs/cert-*/errors",
                 "/opt/redhat-cs/cert-*/system",
@@ -72,42 +70,61 @@ class CertificateSystem(Plugin, RedHatPlugin):
                 "/opt/redhat-cs/cert-*/debug",
                 "/opt/redhat-cs/cert-*/tps-debug.log"
             ])
+
+            self.add_copy_spec([
+                "/opt/redhat-cs/slapd-*/config/dse.ldif",
+                "/opt/redhat-cs/cert-*/config/CS.cfg"
+            ], since=None)
+
         if csversion == 73:
             self.add_copy_spec([
-                "/var/lib/rhpki-*/conf/*cfg*",
-                "/var/lib/rhpki-*/conf/*.ldif",
                 "/var/lib/rhpki-*/logs/debug",
                 "/var/lib/rhpki-*/logs/catalina.*",
                 "/var/lib/rhpki-*/logs/ra-debug.log",
                 "/var/lib/rhpki-*/logs/transactions",
                 "/var/lib/rhpki-*/logs/system"
             ])
+
+            self.add_copy_spec([
+                "/var/lib/rhpki-*/conf/*cfg*",
+                "/var/lib/rhpki-*/conf/*.ldif"
+            ], since=None)
+
         if csversion in (73, 8):
             self.add_copy_spec([
-                "/etc/dirsrv/slapd-*/dse.ldif",
                 "/var/log/dirsrv/slapd-*/access",
                 "/var/log/dirsrv/slapd-*/errors"
             ])
+
+            self.add_copy_spec([
+                "/etc/dirsrv/slapd-*/dse.ldif"
+            ], since=None)
+
         if csversion == 8:
             self.add_copy_spec([
-                "/etc/pki-*/CS.cfg",
-                "/var/lib/pki-*/conf/*cfg*",
                 "/var/log/pki-*/debug",
                 "/var/log/pki-*/catalina.*",
                 "/var/log/pki-*/ra-debug.log",
                 "/var/log/pki-*/transactions",
                 "/var/log/pki-*/system"
             ])
+
+            self.add_copy_spec([
+                "/etc/pki-*/CS.cfg",
+                "/var/lib/pki-*/conf/*cfg*"
+            ], since=None)
+
         if csversion == 9:
             # Get logs and configs for each subsystem if installed
             for subsystem in ('ca', 'kra', 'ocsp', 'tks', 'tps'):
                 self.add_copy_spec([
-                    "/var/lib/pki/*/" + subsystem + "/conf/CS.cfg",
                     "/var/lib/pki/*/logs/" + subsystem + "/system",
                     "/var/lib/pki/*/logs/" + subsystem + "/transactions",
                     "/var/lib/pki/*/logs/" + subsystem + "/debug",
                     "/var/lib/pki/*/logs/" + subsystem + "/selftests.log"
                 ])
+
+                self.add_copy_spec(["/var/lib/pki/*/" + subsystem + "/conf/CS.cfg"], since=None)
 
             # Common log files
             self.add_copy_spec([

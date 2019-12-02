@@ -69,7 +69,7 @@ class Lvm2(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "lvs -a -o +%s %s" % (lvs_cols, lvm_opts)
         ])
 
-        self.add_copy_spec("/etc/lvm")
+        self.add_copy_spec("/etc/lvm", since=None)
 
         if self.get_option('lvmdump'):
             self.do_lvmdump()

@@ -22,7 +22,7 @@ class Logs(Plugin):
             "/etc/syslog.conf",
             "/etc/rsyslog.conf",
             "/etc/rsyslog.d"
-        ])
+        ], since=None)
 
         self.add_copy_spec("/var/log/boot.log")
         self.add_journal(boot="this", catalog=True)

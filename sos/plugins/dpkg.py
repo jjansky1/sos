@@ -26,7 +26,7 @@ class Dpkg(Plugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/var/cache/debconf/config.dat",
             "/etc/debconf.conf"
-        ])
+        ], since=None)
         if not self.get_option("all_logs"):
             self.add_copy_spec("/var/log/dpkg.log")
         else:

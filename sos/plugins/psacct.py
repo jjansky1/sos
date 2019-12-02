@@ -39,7 +39,8 @@ class DebianPsacct(Psacct, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         super(DebianPsacct, self).setup()
-        self.add_copy_spec(["/var/log/account/pacct", "/etc/default/acct"])
+        self.add_copy_spec("/etc/default/acct", since=None)
+        self.add_copy_spec("/var/log/account/pacct")
         if self.get_option("all"):
             self.add_copy_spec("/var/log/account/pacct*.gz")
 

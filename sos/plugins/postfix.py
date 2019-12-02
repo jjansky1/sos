@@ -21,7 +21,7 @@ class Postfix(Plugin):
         self.add_copy_spec([
             "/etc/postfix/main.cf",
             "/etc/postfix/master.cf"
-        ])
+        ], since=None)
         self.add_cmd_output([
             'postconf',
             'mailq'
@@ -35,7 +35,7 @@ class RedHatPostfix(Postfix, RedHatPlugin):
 
     def setup(self):
         super(RedHatPostfix, self).setup()
-        self.add_copy_spec("/etc/mail")
+        self.add_copy_spec("/etc/mail", since=None)
 
 
 class DebianPostfix(Postfix, DebianPlugin, UbuntuPlugin):
@@ -44,6 +44,6 @@ class DebianPostfix(Postfix, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         super(DebianPostfix, self).setup()
-        self.add_copy_spec("/etc/postfix/dynamicmaps.cf")
+        self.add_copy_spec("/etc/postfix/dynamicmaps.cf", since=None)
 
 # vim: set et ts=4 sw=4 :

@@ -92,7 +92,7 @@ class RedHatMysql(Mysql, RedHatPlugin):
             "/etc/ld.so.conf.d/mariadb-*.conf",
             "/etc/my.cnf.d/*",
             "/var/lib/config-data/puppet-generated/mysql/etc/my.cnf.d/*"
-        ])
+        ], since=None)
 
 
 class DebianMysql(Mysql, DebianPlugin, UbuntuPlugin):
@@ -106,6 +106,6 @@ class DebianMysql(Mysql, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         super(DebianMysql, self).setup()
-        self.add_copy_spec("/etc/mysql/conf.d/mysql*")
+        self.add_copy_spec("/etc/mysql/conf.d/mysql*", since=None)
 
 # vim: set et ts=4 sw=4 :

@@ -35,11 +35,14 @@ class Cman(Plugin, RedHatPlugin):
             "/etc/cluster",
             "/etc/sysconfig/cluster",
             "/etc/sysconfig/cman",
-            "/var/log/cluster",
             "/etc/fence_virt.conf",
             "/var/lib/luci/data/luci.db",
             "/var/lib/luci/etc",
-            "/var/log/luci"
+        ], since=None)
+
+        self.add_copy_spec([
+            "/var/log/luci",
+            "/var/log/cluster"
         ])
 
         self.add_cmd_output([

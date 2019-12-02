@@ -61,13 +61,13 @@ class Watchdog(Plugin, RedHatPlugin):
         self.add_copy_spec([
             conf_file,
             '/etc/sysconfig/watchdog',
-        ])
+        ], since=None)
 
         # Get custom executables
         self.add_copy_spec([
             '/etc/watchdog.d',
             '/usr/libexec/watchdog/scripts',
-        ])
+        ], since=None)
 
         # Get logs
         try:

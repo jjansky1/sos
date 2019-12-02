@@ -46,7 +46,7 @@ class RedHatActiveMq(ActiveMq, RedHatPlugin):
         self.add_copy_spec([
             '/etc/sysconfig/activemq',
             '/etc/activemq/activemq.xml'
-        ])
+        ], since=None)
 
 
 class UbuntuActiveMq(ActiveMq, UbuntuPlugin):
@@ -55,4 +55,4 @@ class UbuntuActiveMq(ActiveMq, UbuntuPlugin):
         self.add_copy_spec([
             '/etc/activemq',
             '/etc/default/activemq'
-        ])
+        ], since=None)

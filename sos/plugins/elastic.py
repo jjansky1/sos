@@ -40,8 +40,7 @@ class Elastic(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         return hostname, port
 
     def setup(self):
-        els_config_file = "/etc/elasticsearch/elasticsearch.yml"
-        self.add_copy_spec(els_config_file)
+        self.add_copy_spec("/etc/elasticsearch/elasticsearch.yml", since=None)
 
         if self.get_option("all_logs"):
             self.add_copy_spec("/var/log/elasticsearch/*")

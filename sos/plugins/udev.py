@@ -21,6 +21,6 @@ class Udev(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/etc/udev/udev.conf",
             "/lib/udev/rules.d",
             "/etc/udev/rules.d/*"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

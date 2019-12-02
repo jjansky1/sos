@@ -18,7 +18,7 @@ class VirtWho(Plugin, RedHatPlugin):
     packages = ('virt-who',)
 
     def setup(self):
-        self.add_copy_spec(["/etc/virt-who.d/*", "/etc/virt-who.conf"])
+        self.add_copy_spec(["/etc/virt-who.d/*", "/etc/virt-who.conf"], since=None)
         self.add_cmd_output("virt-who -dop")
 
     def postproc(self):

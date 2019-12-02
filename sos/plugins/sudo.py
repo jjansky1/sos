@@ -19,7 +19,7 @@ class Sudo(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
     packages = ('sudo')
 
     def setup(self):
-        self.add_copy_spec("/etc/sudo*")
+        self.add_copy_spec("/etc/sudo*", since=None)
 
     def postproc(self):
         regexp = r"(\s*bindpw\s*)\S+"

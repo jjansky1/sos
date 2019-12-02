@@ -37,7 +37,7 @@ class GnocchiPlugin(Plugin, RedHatPlugin):
             self.var_puppet_gen + "/etc/httpd/conf.d/*",
             self.var_puppet_gen + "/etc/httpd/conf.modules.d/wsgi.conf",
             self.var_puppet_gen + "/etc/my.cnf.d/tripleo.cnf"
-        ])
+        ], since=None)
 
         if self.get_option("all_logs"):
             self.add_copy_spec([

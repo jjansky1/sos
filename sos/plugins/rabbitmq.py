@@ -49,7 +49,7 @@ class RabbitMQ(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             self.var_puppet_gen + "/etc/rabbitmq/*",
             self.var_puppet_gen + "/etc/security/limits.d/",
             self.var_puppet_gen + "/etc/systemd/"
-        ])
+        ], since=None)
         self.add_copy_spec([
             "/var/log/rabbitmq/*",
         ])

@@ -39,7 +39,7 @@ class OpenStackSwift(Plugin):
             self.var_puppet_gen + "/swift/etc/swift/*",
             self.var_puppet_gen + "/swift/etc/xinetd.d/*",
             self.var_puppet_gen + "/memcached/etc/sysconfig/memcached"
-        ])
+        ], since=None)
 
     def apply_regex_sub(self, regexp, subst):
         self.do_path_regex_sub(r"/etc/swift/.*\.conf.*", regexp, subst)

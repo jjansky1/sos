@@ -23,10 +23,11 @@ class Hardware(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/proc/dma",
             "/proc/devices",
             "/proc/rtc",
-            "/var/log/mcelog",
             "/sys/class/dmi/id/*",
             "/sys/class/drm/*/edid"
-        ])
+        ], since=None)
+
+        self.add_copy_spec("/var/log/mcelog")
 
         self.add_cmd_output("dmidecode", root_symlink="dmidecode")
 

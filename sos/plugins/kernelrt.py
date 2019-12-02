@@ -32,7 +32,7 @@ class KernelRT(Plugin, RedHatPlugin):
             '/sys/kernel/realtime',
             clocksource_path + 'available_clocksource',
             clocksource_path + 'current_clocksource'
-        ])
+        ], since=None)
         # note: rhbz#1059685 'tuna - NameError: global name 'cgroups' is not
         # defined this command throws an exception on versions prior to
         # 0.10.4-5.

@@ -41,7 +41,7 @@ class OpenStackIronic(Plugin):
             self.var_puppet_gen + "_api/etc/httpd/conf.d/",
             self.var_puppet_gen + "_api/etc/httpd/conf.modules.d/*.conf",
             self.var_puppet_gen + "_api/etc/my.cnf.d/tripleo.cnf"
-        ])
+        ], since=None)
 
         if self.get_option("all_logs"):
             self.add_copy_spec([
@@ -139,8 +139,8 @@ class RedHatIronic(OpenStackIronic, RedHatPlugin):
         # is the optional ironic-discoverd service installed?
         if any([self.is_installed(p) for p in self.discoverd_packages]):
             self.conf_list.append('/etc/ironic-discoverd/*')
-            self.add_copy_spec('/etc/ironic-discoverd/')
-            self.add_copy_spec('/var/lib/ironic-discoverd/')
+            self.add_copy_spec('/etc/ironic-discoverd/', since=None)
+            self.add_copy_spec('/var/lib/ironic-discoverd/', since=None)
             self.add_copy_spec('/var/log/ironic-discoverd/')
 
             self.add_journal(units="openstack-ironic-discoverd")
@@ -149,9 +149,9 @@ class RedHatIronic(OpenStackIronic, RedHatPlugin):
         # ironic-discoverd was renamed to ironic-inspector in Liberty
         self.conf_list.append('/etc/ironic-inspector/*')
         self.conf_list.append(self.var_puppet_gen + '/etc/ironic-inspector/*')
-        self.add_copy_spec('/etc/ironic-inspector/')
-        self.add_copy_spec(self.var_puppet_gen + '/etc/ironic-inspector/')
-        self.add_copy_spec('/var/lib/ironic-inspector/')
+        self.add_copy_spec('/etc/ironic-inspector/', since=None)
+        self.add_copy_spec(self.var_puppet_gen + '/etc/ironic-inspector/', since=None)
+        self.add_copy_spec('/var/lib/ironic-inspector/', since=None)
         if self.get_option("all_logs"):
             self.add_copy_spec('/var/log/ironic-inspector/')
         else:

@@ -26,7 +26,7 @@ class RedHatIscsiTarget(IscsiTarget, RedHatPlugin):
 
     def setup(self):
         super(RedHatIscsiTarget, self).setup()
-        self.add_copy_spec("/etc/tgt/targets.conf")
+        self.add_copy_spec("/etc/tgt/targets.conf", since=None)
         self.add_cmd_output("tgtadm --lld iscsi --op show --mode target")
 
 
@@ -40,6 +40,6 @@ class DebianIscsiTarget(IscsiTarget, DebianPlugin, UbuntuPlugin):
             "/etc/iet",
             "/etc/sysctl.d/30-iscsitarget.conf",
             "/etc/default/iscsitarget"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

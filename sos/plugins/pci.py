@@ -21,7 +21,7 @@ class Pci(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
             "/proc/ioports",
             "/proc/iomem",
             "/proc/bus/pci"
-        ])
+        ], since=None)
 
         self.add_cmd_output("lspci -nnvv", root_symlink="lspci")
         self.add_cmd_output("lspci -tv")

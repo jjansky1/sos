@@ -40,7 +40,7 @@ class OpenStackHorizon(Plugin):
             self.var_puppet_gen + "/horizon/etc/httpd/conf.d/",
             self.var_puppet_gen + "/horizon/etc/httpd/conf.modules.d/*.conf",
             self.var_puppet_gen + "/memcached/etc/sysconfig/memcached"
-        ])
+        ], since=None)
         self.add_forbidden_path("*.py[co]")
 
     def postproc(self):

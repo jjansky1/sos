@@ -24,7 +24,7 @@ class Services(Plugin):
             "/etc/inittab",
             "/etc/rc.d",
             "/etc/rc.local"
-        ])
+        ], since=None)
         if self.get_option('servicestatus'):
             self.add_cmd_output("service --status-all")
         self.add_cmd_output([
@@ -44,6 +44,6 @@ class DebianServices(Services, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         super(DebianServices, self).setup()
-        self.add_copy_spec("/etc/rc*.d")
+        self.add_copy_spec("/etc/rc*.d", since=None)
 
 # vim: set et ts=4 sw=4 :

@@ -36,7 +36,7 @@ class RedHatChrony(Chrony, RedHatPlugin):
         self.add_copy_spec([
             "/etc/chrony.conf",
             "/var/lib/chrony/drift"
-        ])
+        ], since=None)
         self.add_journal(units="chronyd")
 
 
@@ -47,7 +47,7 @@ class DebianChrony(Chrony, DebianPlugin, UbuntuPlugin):
             "/etc/chrony/chrony.conf",
             "/var/lib/chrony/chrony.drift",
             "/etc/default/chrony"
-        ])
+        ], since=None)
         self.add_journal(units="chrony")
 
 # vim: et ts=4 sw=4

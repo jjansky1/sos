@@ -37,6 +37,6 @@ class Abrt(Plugin, RedHatPlugin):
             "/etc/abrt/abrt.conf",
             "/etc/abrt/abrt-action-save-package-data.conf",
             "/etc/abrt/plugins"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

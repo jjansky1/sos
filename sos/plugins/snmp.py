@@ -20,7 +20,7 @@ class Snmp(Plugin):
     files = ('/etc/snmp/snmpd.conf',)
 
     def setup(self):
-        self.add_copy_spec("/etc/snmp")
+        self.add_copy_spec("/etc/snmp", since=None)
 
 
 class RedHatSnmp(Snmp, RedHatPlugin):

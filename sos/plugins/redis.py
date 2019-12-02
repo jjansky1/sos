@@ -33,7 +33,7 @@ class Redis(Plugin, RedHatPlugin):
             self.var_puppet_gen + "/etc/redis*",
             self.var_puppet_gen + "/etc/redis/",
             self.var_puppet_gen + "/etc/security/limits.d/"
-        ])
+        ], since=None)
 
         self.add_cmd_output("redis-cli info")
         if self.get_option("all_logs"):

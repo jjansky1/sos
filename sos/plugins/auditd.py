@@ -22,7 +22,7 @@ class Auditd(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/audit/auditd.conf",
             "/etc/audit/audit.rules"
-        ])
+        ], since=None)
         self.add_cmd_output([
             "ausearch --input-logs -m avc,user_avc -ts today",
             "auditctl -s",

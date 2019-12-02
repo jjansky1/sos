@@ -64,6 +64,9 @@ class Pulp(Plugin, RedHatPlugin):
             "/etc/pulp/*.conf",
             "/etc/pulp/server/plugins.conf.d/",
             "/etc/default/pulp*",
+        ], since=None)
+
+        self.add_copy_spec([
             "/var/log/httpd/pulp-http.log*",
             "/var/log/httpd/pulp-https.log*",
             "/var/log/httpd/pulp-http_access_ssl.log*",

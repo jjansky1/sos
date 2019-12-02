@@ -19,6 +19,6 @@ class Mpt(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
     plugin_name = 'mpt'
 
     def setup(self):
-        self.add_copy_spec("/proc/mpt")
+        self.add_copy_spec("/proc/mpt", since=None)
 
 # vim: set et ts=4 sw=4 :

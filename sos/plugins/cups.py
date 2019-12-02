@@ -31,7 +31,7 @@ class Cups(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/etc/cups/*.types",
             "/etc/cups/lpoptions",
             "/etc/cups/ppd/*.ppd"
-        ])
+        ], since=None)
 
         self.add_cmd_output([
             "lpstat -t",

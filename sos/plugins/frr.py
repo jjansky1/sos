@@ -20,6 +20,6 @@ class Frr(Plugin, RedHatPlugin):
     packages = ('frr',)
 
     def setup(self):
-        self.add_copy_spec("/etc/frr/")
+        self.add_copy_spec("/etc/frr/", since=None)
 
 # vim: set et ts=4 sw=4 :

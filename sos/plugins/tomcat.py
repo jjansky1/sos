@@ -25,7 +25,7 @@ class Tomcat(Plugin, RedHatPlugin):
             "/etc/tomcat6",
             "/etc/tomcat7",
             "/etc/tomcat8"
-        ])
+        ], since=None)
 
         if not self.get_option("all_logs"):
             log_glob = "/var/log/tomcat*/catalina.out"

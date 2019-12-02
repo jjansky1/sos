@@ -24,7 +24,7 @@ class LightDm(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/lightdm/lightdm.conf",
             "/etc/lightdm/users.conf"
-        ])
+        ], since=None)
         if not self.get_option("all_logs"):
             self.add_copy_spec("/var/log/lightdm/lightdm.log")
             self.add_copy_spec("/var/log/lightdm/x-0-greeter.log")

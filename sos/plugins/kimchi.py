@@ -19,11 +19,11 @@ class Kimchi(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
     packages = ('kimchi',)
 
     def setup(self):
-        self.add_copy_spec('/etc/kimchi/')
+        self.add_copy_spec('/etc/kimchi/', since=None)
         if not self.get_option('all_logs'):
             self.add_copy_spec('/var/log/kimchi/*.log')
-            self.add_copy_spec('/etc/kimchi/kimchi*')
-            self.add_copy_spec('/etc/kimchi/distros.d/*.json')
+            self.add_copy_spec('/etc/kimchi/kimchi*', since=None)
+            self.add_copy_spec('/etc/kimchi/distros.d/*.json', since=None)
         else:
             self.add_copy_spec('/var/log/kimchi/')
 

@@ -53,6 +53,6 @@ class OmnipathManager(Plugin, RedHatPlugin):
         self.add_cmd_output("/usr/lib/opa-fm/bin/fm_capture",
                             runat=self.get_cmd_output_path())
 
-        self.add_copy_spec("/etc/opa-fm/opafm.xml")
+        self.add_copy_spec("/etc/opa-fm/opafm.xml", since=None)
 
 # vim: set et ts=4 sw=4 :

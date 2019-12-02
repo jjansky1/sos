@@ -25,4 +25,4 @@ class Date(Plugin, RedHatPlugin, DebianPlugin):
             'hwclock'
         ])
 
-        self.add_copy_spec('/etc/localtime')
+        self.add_copy_spec(['/etc/localtime'], since=None)

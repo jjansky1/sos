@@ -31,7 +31,7 @@ class Docker(Plugin):
         self.add_copy_spec([
             "/etc/docker/daemon.json",
             "/var/lib/docker/repositories-*"
-        ])
+        ], since=None)
 
         self.add_env_var([
             'HTTP_PROXY',
@@ -138,7 +138,7 @@ class RedHatDocker(Docker, RedHatPlugin):
         self.add_copy_spec([
             "/etc/udev/rules.d/80-docker.rules",
             "/etc/containers/"
-        ])
+        ], since=None)
 
 
 class UbuntuDocker(Docker, UbuntuPlugin):
@@ -150,6 +150,6 @@ class UbuntuDocker(Docker, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/default/docker",
             "/run/docker/libcontainerd/containerd/events.log"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

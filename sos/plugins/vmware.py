@@ -24,6 +24,6 @@ class VMWare(Plugin, RedHatPlugin):
             "/etc/vmware/locations",
             "/etc/vmware/config",
             "/proc/vmmemctl"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

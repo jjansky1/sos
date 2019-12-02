@@ -34,7 +34,7 @@ class PowerPath(Plugin, RedHatPlugin):
             "/etc/emcp_devicesDB.idx",
             "/etc/emc/powerkmd.custom",
             "/etc/modprobe.conf.pp"
-        ])
+        ], since=None)
 
     def get_pp_config(self):
         """ EMC PowerPath specific information - commands

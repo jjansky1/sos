@@ -25,6 +25,6 @@ class Cifs(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/proc/fs/cifs/SecurityFlags",
             "/proc/fs/cifs/Stats",
             "/proc/fs/cifs/DebugData",
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

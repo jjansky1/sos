@@ -57,7 +57,7 @@ class OpenStackPlacement(Plugin):
             self.var_puppet_gen + "/etc/httpd/conf/",
             self.var_puppet_gen + "/etc/httpd/conf.d/",
             self.var_puppet_gen + "/etc/httpd/conf.modules.d/*.conf",
-        ])
+        ], since=None)
 
     def running_in_container(self):
         for runtime in ["docker", "podman"]:

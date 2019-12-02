@@ -23,12 +23,15 @@ class omsa(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         self.add_copy_spec([
-            "/var/log/dell/updatepackage/log/support",
-            "/opt/dell/srvadmin/var/log/openmanage/Inventory.xml*",
             "/opt/dell/srvadmin/etc/omreg.cfg",
             "/opt/dell/srvadmin/etc/openmanage/oma/ini",
             "/opt/dell/srvadmin/etc/srvadmin-deng/ini",
-            "/opt/dell/srvadmin/etc/srvadmin-isvc/ini/d*ini",
+            "/opt/dell/srvadmin/etc/srvadmin-isvc/ini/d*ini"
+        ], since=None)
+
+        self.add_copy_spec([
+            "/var/log/dell/updatepackage/log/support",
+            "/opt/dell/srvadmin/var/log/openmanage/Inventory.xml*"
         ])
 
         self.add_cmd_output([

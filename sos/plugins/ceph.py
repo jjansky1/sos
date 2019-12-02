@@ -56,7 +56,7 @@ class Ceph(Plugin, RedHatPlugin, UbuntuPlugin):
             "/etc/calamari/",
             "/var/lib/ceph/",
             "/run/ceph/"
-        ])
+        ], since=None)
 
         self.add_cmd_output([
             "ceph mon stat",

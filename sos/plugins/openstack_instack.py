@@ -20,13 +20,15 @@ NON_CONTAINERIZED_DEPLOY = [
         '/home/stack/undercloud.conf'
 ]
 CONTAINERIZED_DEPLOY = [
-        '/var/log/heat-launcher/',
-        '/home/stack/install-undercloud.log',
         '/home/stack/undercloud-install-*.tar.bzip2',
-        '/var/lib/mistral/config-download-latest/ansible.log',
         '/home/stack/.tripleo/history',
         '/var/lib/tripleo-config/',
+]
+CONTAINERIZED_DEPLOY_LOGS = [
         '/var/log/tripleo-container-image-prepare.log',
+        '/var/log/heat-launcher/',
+        '/var/lib/mistral/config-download-latest/ansible.log',
+        '/home/stack/install-undercloud.log',
 ]
 
 
@@ -37,7 +39,8 @@ class OpenStackInstack(Plugin):
     profiles = ('openstack', 'openstack_undercloud')
 
     def setup(self):
-        self.add_copy_spec(NON_CONTAINERIZED_DEPLOY + CONTAINERIZED_DEPLOY)
+        self.add_copy_spec(NON_CONTAINERIZED_DEPLOY + CONTAINERIZED_DEPLOY, since=None)
+        self.add_copy_spec(CONTAINERIZED_DEPLOY_LOGS)
 
         if self.get_option("all_logs"):
             self.add_copy_spec([

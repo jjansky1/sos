@@ -44,7 +44,7 @@ class RedHatOpenSSL(OpenSSL, RedHatPlugin):
 
     def setup(self):
         super(RedHatOpenSSL, self).setup()
-        self.add_copy_spec("/etc/pki/tls/openssl.cnf")
+        self.add_copy_spec("/etc/pki/tls/openssl.cnf", since=None)
 
 
 class DebianOpenSSL(OpenSSL, DebianPlugin, UbuntuPlugin):
@@ -55,6 +55,6 @@ class DebianOpenSSL(OpenSSL, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         super(DebianOpenSSL, self).setup()
-        self.add_copy_spec("/etc/ssl/openssl.cnf")
+        self.add_copy_spec("/etc/ssl/openssl.cnf", since=None)
 
 # vim: set et ts=4 sw=4 :

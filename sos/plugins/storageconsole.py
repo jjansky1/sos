@@ -40,7 +40,7 @@ class StorageConsole(Plugin, RedHatPlugin, DebianPlugin):
             "/etc/skyring/",
             "/etc/carbon/",
             "/etc/graphite-web/"
-        ])
+        ], since=None)
 
         self.add_cmd_output(
             "mongo skyring --eval 'db.getCollectionNames()'",

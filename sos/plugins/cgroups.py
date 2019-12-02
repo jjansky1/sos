@@ -21,7 +21,7 @@ class Cgroups(Plugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/proc/cgroups",
             "/sys/fs/cgroup"
-        ])
+        ], since=None)
 
         self.add_cmd_output("systemd-cgls")
 
@@ -38,6 +38,6 @@ class RedHatCgroups(Cgroups, RedHatPlugin):
             "/etc/cgsnapshot_blacklist.conf",
             "/etc/cgconfig.conf",
             "/etc/cgrules.conf"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

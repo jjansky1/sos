@@ -33,7 +33,10 @@ class LXD(Plugin, UbuntuPlugin):
             "/etc/default/lxd-bridge",
             "/var/lib/lxd/lxd.db",
             "/var/lib/lxd/database/local.db",
-            "/var/lib/lxd/database/global/*",
+            "/var/lib/lxd/database/global/*"
+        ], since=None)
+
+        self.add_copy_spec([
             "/var/log/lxd/*"
         ])
 

@@ -119,7 +119,7 @@ class OpenStackNova(Plugin):
             self.var_puppet_gen + "_libvirt/etc/nova/migration/"
             "authorized_keys",
             self.var_puppet_gen + "_libvirt/var/lib/nova/.ssh/config",
-        ])
+        ], since=None)
 
     def running_in_container(self):
         for runtime in ["docker", "podman"]:
@@ -199,7 +199,7 @@ class DebianNova(OpenStackNova, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/sudoers.d/nova_sudoers",
             "/usr/share/polkit-1/rules.d/60-libvirt.rules",
-        ])
+        ], since=None)
 
 
 class RedHatNova(OpenStackNova, RedHatPlugin):
@@ -215,7 +215,7 @@ class RedHatNova(OpenStackNova, RedHatPlugin):
             "/etc/sudoers.d/nova",
             "/etc/security/limits.d/91-nova.conf",
             "/etc/sysconfig/openstack-nova-novncproxy"
-        ])
+        ], since=None)
         if self.get_option("all_logs"):
             self.add_copy_spec([
                 "/var/log/httpd/nova_api*",

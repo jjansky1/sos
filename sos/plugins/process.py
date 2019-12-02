@@ -33,7 +33,7 @@ class Process(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/proc/sched_debug",
             "/proc/stat"
-        ])
+        ], since=None)
 
         if self.get_option("smaps"):
             self.add_copy_spec("/proc/[0-9]*/smaps")

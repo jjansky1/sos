@@ -70,7 +70,7 @@ class Gluster(Plugin, RedHatPlugin):
             "/var/lib/glusterd/",
             # collect nfs-ganesha related configuration
             "/run/gluster/shared_storage/nfs-ganesha/"
-        ] + glob.glob('/run/gluster/*tier-dht/*'))
+        ] + glob.glob('/run/gluster/*tier-dht/*'), since=None)
 
         if not self.get_option("all_logs"):
             self.add_copy_spec([
@@ -89,7 +89,7 @@ class Gluster(Plugin, RedHatPlugin):
                     # statedump file entries.
                     time.sleep(1)
                     self.wait_for_statedump(self.statedump_dir)
-                    self.add_copy_spec(self.statedump_dir)
+                    self.add_copy_spec(self.statedump_dir, since=None)
                 else:
                     self.soslog.info("could not send SIGUSR1 to glusterfs/"
                                      "glusterd processes")
@@ -99,7 +99,7 @@ class Gluster(Plugin, RedHatPlugin):
             state = self.exec_cmd("gluster get-state")
             if state['status'] == 0:
                 state_file = state['output'].split()[-1]
-                self.add_copy_spec(state_file)
+                self.add_copy_spec(state_file, since=None)
 
         volume_cmd = self.collect_cmd_output("gluster volume info")
         if volume_cmd['status'] == 0:

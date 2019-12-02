@@ -35,7 +35,7 @@ class OpenStackManila(Plugin):
             self.var_puppet_gen + "/etc/httpd/conf/",
             self.var_puppet_gen + "/etc/httpd/conf.d/",
             self.var_puppet_gen + "/etc/httpd/conf.modules.d/*.conf",
-        ])
+        ], since=None)
 
         if self.get_option("all_logs"):
             self.add_copy_spec([
@@ -97,7 +97,7 @@ class RedHatManila(OpenStackManila, RedHatPlugin):
 
     def setup(self):
         super(RedHatManila, self).setup()
-        self.add_copy_spec("/etc/sudoers.d/manila")
+        self.add_copy_spec("/etc/sudoers.d/manila", since=None)
 
 
 # vim: et ts=4 sw=4

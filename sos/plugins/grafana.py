@@ -35,7 +35,7 @@ class Grafana(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/grafana/",
             "/etc/sysconfig/grafana-server",
-        ])
+        ], since=None)
 
     def postproc(self):
         protect_keys = [

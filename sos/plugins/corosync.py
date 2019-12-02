@@ -22,9 +22,11 @@ class Corosync(Plugin):
     def setup(self):
         self.add_copy_spec([
             "/etc/corosync",
-            "/var/lib/corosync/fdata",
-            "/var/log/cluster/corosync.log"
-        ])
+            "/var/lib/corosync/fdata"
+        ], since=None)
+
+        self.add_copy_spec(["/var/log/cluster/corosync.log"])
+
         self.add_cmd_output([
             "corosync-quorumtool -l",
             "corosync-quorumtool -s",

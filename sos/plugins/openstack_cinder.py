@@ -56,7 +56,7 @@ class OpenStackCinder(Plugin):
             self.var_puppet_gen + "/etc/httpd/conf.modules.d/*.conf",
             self.var_puppet_gen + "/etc/my.cnf.d/tripleo.cnf",
             self.var_puppet_gen + "/etc/sysconfig/",
-        ])
+        ], since=None)
 
         if self.get_option("all_logs"):
             self.add_copy_spec([
@@ -135,7 +135,7 @@ class RedHatCinder(OpenStackCinder, RedHatPlugin):
 
     def setup(self):
         super(RedHatCinder, self).setup()
-        self.add_copy_spec(["/etc/sudoers.d/cinder"])
+        self.add_copy_spec(["/etc/sudoers.d/cinder"], since=None)
 
 
 # vim: set et ts=4 sw=4 :

@@ -24,13 +24,13 @@ class Release(Plugin, RedHatPlugin, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/*release",
             "/etc/lsb-release/*"
-        ])
+        ], since=None)
 
 
 class DebianRelease(Release, DebianPlugin):
 
     def setup(self):
         super(DebianRelease, self).setup()
-        self.add_copy_spec('/etc/debian_version')
+        self.add_copy_spec('/etc/debian_version', since=None)
 
 # vim: set et ts=4 sw=4 :

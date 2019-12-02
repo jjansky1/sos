@@ -18,7 +18,7 @@ class OpenStackNovajoin(Plugin):
     profiles = ('openstack', 'openstack_undercloud')
 
     def setup(self):
-        self.add_copy_spec("/etc/novajoin/")
+        self.add_copy_spec("/etc/novajoin/", since=None)
         if self.get_option("all_logs"):
             self.add_copy_spec("/var/log/novajoin/")
         else:

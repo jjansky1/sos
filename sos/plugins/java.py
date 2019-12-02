@@ -17,7 +17,7 @@ class Java(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
     verify_packages = ('java.*',)
 
     def setup(self):
-        self.add_copy_spec("/etc/java")
+        self.add_copy_spec("/etc/java", since=None)
         self.add_forbidden_path("/etc/java/security")
         self.add_cmd_output("alternatives --display java",
                             root_symlink="java")

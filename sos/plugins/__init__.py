@@ -904,15 +904,14 @@ class Plugin(object):
     def _add_copy_paths(self, copy_paths):
         self.copy_paths.update(copy_paths)
 
-    def add_copy_spec(self, copyspecs, sizelimit=None, maxage=None,
+    def add_copy_spec(self, copyspecs, sizelimit=None, since=None,
                       tailit=True, pred=None):
         """Add a file or glob but limit it to sizelimit megabytes. Collect
-        files with mtime not older than maxage hours.
+        files with mtime not older than since date in format YYYYMMDD.
         If fname is a single file the file will be tailed to meet sizelimit.
         If the first file in a glob is too large it will be tailed to meet
         the sizelimit.
         """
-        since = None
         if self.get_option('since'):
             since = self.get_option('since')
 
@@ -959,18 +958,15 @@ class Plugin(object):
                     return 0
 
             def time_filter(path):
-                """ When --since is passed, or maxage is coming from the
+                """ When --since is passed or since is coming from the
                 plugin, we need to filter out older files """
 
-                if logarchive_pattern.search(path) is None:
-                    return True
                 filetime = datetime.fromtimestamp(getmtime(path))
-                if ((since and filetime < since) or
-                   (maxage and (time()-filetime < maxage*3600))):
+                if (since and filetime < since):
                     return False
                 return True
 
-            if since or maxage:
+            if since:
                 files = list(filter(lambda f: time_filter(f), files))
 
             files.sort(key=getmtime, reverse=True)

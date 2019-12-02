@@ -32,7 +32,7 @@ class Skydive(Plugin, RedHatPlugin):
     ]
 
     def setup(self):
-        self.add_copy_spec("/etc/skydive/skydive.yml")
+        self.add_copy_spec("/etc/skydive/skydive.yml", since=None)
         self.add_copy_spec("/var/log/skydive.log")
 
         username = (self.get_option("username") or

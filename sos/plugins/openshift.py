@@ -46,10 +46,11 @@ class Openshift(Plugin, RedHatPlugin):
     def setup(self):
         self.add_copy_spec([
             "/etc/openshift-enterprise-release",
-            "/var/log/openshift",
             "/etc/openshift/*.conf",
             "/etc/openshift/upgrade",
-        ])
+        ], since=None)
+
+        self.add_copy_spec("/var/log/openshift")
 
         self.add_cmd_output("oo-diagnostics -v")
 
@@ -62,7 +63,7 @@ class Openshift(Plugin, RedHatPlugin):
                 "/var/www/openshift/broker/httpd/conf.d/*.conf",
                 "/var/www/openshift/console/httpd/httpd.conf",
                 "/var/www/openshift/console/httpd/conf.d/*.conf",
-            ])
+            ], since=None)
 
             self.add_cmd_output([
                 "oo-accept-broker -v",
@@ -93,6 +94,9 @@ class Openshift(Plugin, RedHatPlugin):
                 os.path.join(self.node_proxy_dir, "routes.json"),
                 os.path.join(self.node_proxy_dir, "geardb.json"),
                 os.path.join(self.node_proxy_dir, "sniproxy.json"),
+            ], since=None)
+
+            self.add_copy_spec([
                 "/var/log/httpd/openshift_log",
                 "/var/log/mcollective.log",
                 "/var/log/node-web-proxy/access.log",

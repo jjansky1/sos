@@ -25,9 +25,10 @@ class Symcli(Plugin, RedHatPlugin):
         """
         self.add_copy_spec([
             "/var/symapi/db/symapi_db.bin",
-            "/var/symapi/config/[a-z]*",
-            "/var/symapi/log/[a-z]*"
-        ])
+            "/var/symapi/config/[a-z]*"
+        ], since=None)
+
+        self.add_copy_spec("/var/symapi/log/[a-z]*")
 
     def get_symcli_config(self):
         """ EMC Solutions Enabler SYMCLI specific information

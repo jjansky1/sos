@@ -33,7 +33,7 @@ class Upstart(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             '/etc/init.conf',
             '/etc/event.d/*',
             '/etc/init/*.conf'
-        ])
+        ], since=None)
 
         # State file
         self.add_copy_spec('/var/log/upstart/upstart.state')
@@ -41,7 +41,7 @@ class Upstart(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         # Log files
         self.add_copy_spec('/var/log/upstart/*')
         # Session Jobs (running Upstart as a Session Init)
-        self.add_copy_spec('/usr/share/upstart/')
+        self.add_copy_spec('/usr/share/upstart/', since=None)
 
 
 # vim: set et ts=4 sw=4 :

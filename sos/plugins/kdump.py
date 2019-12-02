@@ -23,7 +23,7 @@ class KDump(Plugin):
             "/proc/cmdline",
             "/sys/kernel/kexec_crash_loaded",
             "/sys/kernel/kexec_crash_size"
-        ])
+        ], since=None)
 
 
 class RedHatKDump(KDump, RedHatPlugin):
@@ -63,14 +63,14 @@ class RedHatKDump(KDump, RedHatPlugin):
             "/etc/kdump.conf",
             "/etc/udev/rules.d/*kexec.rules",
             "/var/crash/*/vmcore-dmesg.txt"
-        ])
+        ], since=None)
         try:
             path = self.read_kdump_conffile()
         except Exception:
             # set no filesystem and default path
             path = "/var/crash"
 
-        self.add_copy_spec("{}/*/vmcore-dmesg.txt".format(path))
+        self.add_copy_spec("{}/*/vmcore-dmesg.txt".format(path), since=None)
 
 
 class DebianKDump(KDump, DebianPlugin, UbuntuPlugin):
@@ -87,6 +87,6 @@ class DebianKDump(KDump, DebianPlugin, UbuntuPlugin):
 
         self.add_copy_spec([
             "/etc/default/kdump-tools"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

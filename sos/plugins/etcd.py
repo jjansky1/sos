@@ -34,7 +34,7 @@ class etcd(Plugin, RedHatPlugin):
             '/etc/etcd/ca',
             '/etc/etcd/*.key'
         ])
-        self.add_copy_spec('/etc/etcd')
+        self.add_copy_spec('/etc/etcd', since=None)
 
         subcmds = [
            '--version',

@@ -34,6 +34,8 @@ class Navicli(Plugin, RedHatPlugin):
             "/etc/Navisphere/agent.config",
             "/etc/Navisphere/Navimon.cfg",
             "/etc/Navisphere/Quietmode.cfg",
+        ], since=None)
+        self.add_copy_spec([
             "/etc/Navisphere/messages/[a-z]*",
             "/etc/Navisphere/log/[a-z]*"
         ])

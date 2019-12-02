@@ -20,6 +20,6 @@ class HardwareTestSuite(Plugin, RedHatPlugin):
         self.add_copy_spec([
             "/etc/httpd/conf.d/hts.conf",
             "/var/hts"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

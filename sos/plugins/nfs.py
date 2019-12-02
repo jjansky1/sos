@@ -24,7 +24,7 @@ class Nfs(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/proc/fs/nfsfs/servers",
             "/proc/fs/nfsfs/volumes",
             "/run/sysconfig/nfs-utils",
-        ])
+        ], since=None)
         return
 
 

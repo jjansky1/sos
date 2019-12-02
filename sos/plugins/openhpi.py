@@ -20,7 +20,7 @@ class OpenHPI(Plugin, RedHatPlugin):
         self.add_copy_spec([
             "/etc/openhpi/openhpi.conf",
             "/etc/openhpi/openhpiclient.conf"
-        ])
+        ], since=None)
 
     def postproc(self):
         self.do_file_sub("/etc/openhpi/openhpi.conf",

@@ -28,7 +28,7 @@ class OvirtHostedEngine(Plugin, RedHatPlugin):
         # Add configuration files
         # Collecting the whole directory since it may contain branding
         # configuration files or third party plugins configuration files
-        self.add_copy_spec(['/etc/ovirt-hosted-engine-setup.env.d/'])
+        self.add_copy_spec(['/etc/ovirt-hosted-engine-setup.env.d/'], since=None)
 
         self.add_copy_spec([
             '/etc/ovirt-hosted-engine/answers.conf',
@@ -41,7 +41,7 @@ class OvirtHostedEngine(Plugin, RedHatPlugin):
             '/etc/ovirt-hosted-engine-ha/notifications/state_transition.txt',
             '/run/ovirt-hosted-engine-ha/vm.conf',
             '/var/lib/ovirt-hosted-engine-ha/broker.conf',
-        ])
+        ], since=None)
 
         self.add_copy_spec([
             '/var/log/ovirt-hosted-engine-setup',

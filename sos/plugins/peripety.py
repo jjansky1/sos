@@ -20,7 +20,7 @@ class Peripety(Plugin, RedHatPlugin):
     services = ('peripetyd',)
 
     def setup(self):
-        self.add_copy_spec('/etc/peripetyd.conf')
+        self.add_copy_spec('/etc/peripetyd.conf', since=None)
 
         forbid_reg = [
             'vd.*',

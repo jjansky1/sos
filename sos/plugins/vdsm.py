@@ -71,7 +71,7 @@ class Vdsm(Plugin, RedHatPlugin):
             '/tmp/vds_bootstrap*',
             '/etc/vdsm/*',
             '/etc/pki/vdsm/certs/'
-        ])
+        ], since=None)
 
         self.add_copy_spec('/var/log/vdsm/*')
 
@@ -80,7 +80,7 @@ class Vdsm(Plugin, RedHatPlugin):
             '/run/vdsm/*',
             '/usr/libexec/vdsm/hooks',
             '/var/lib/vdsm',
-        ])
+        ], since=None)
 
         qemu_pids = self.get_process_pids('qemu-kvm')
         if qemu_pids:
@@ -89,7 +89,7 @@ class Vdsm(Plugin, RedHatPlugin):
                 "/proc/%s/%s" % (pid, name)
                 for pid in qemu_pids
                 for name in files
-            ])
+            ], since=None)
         self.add_cmd_output([
             "ls -ldZ /etc/vdsm",
             "su vdsm -s /bin/sh -c 'tree -l /rhev/data-center'",

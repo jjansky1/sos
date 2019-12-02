@@ -24,7 +24,7 @@ class Collectd(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         self.add_copy_spec([
             '/etc/collectd.conf',
             '/etc/collectd.d/*.conf',
-        ])
+        ], since=None)
 
         p = re.compile('^LoadPlugin.*')
         try:

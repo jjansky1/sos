@@ -33,7 +33,8 @@ class Monit(Plugin, RedHatPlugin):
 
     def setup(self):
         self.add_cmd_output("monit status")
-        self.add_copy_spec(self.monit_log + self.monit_conf)
+        self.add_copy_spec(self.monit_log)
+        self.add_copy_spec(self.monit_conf, since=None)
 
     def postproc(self):
         # Post process the files included to scrub any

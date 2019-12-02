@@ -36,10 +36,10 @@ class OpenStackNeutron(Plugin):
             self.var_puppet_gen + "/etc/neutron/",
             self.var_puppet_gen + "/etc/default/neutron-server",
             self.var_puppet_gen + "/etc/my.cnf.d/tripleo.cnf"
-        ])
+        ], since=None)
         # copy whole /var/lib/neutron except for potentially huge lock subdir;
         # rather take a list of files in the dir only
-        self.add_copy_spec("/var/lib/neutron/")
+        self.add_copy_spec("/var/lib/neutron/", since=None)
         self.add_forbidden_path("/var/lib/neutron/lock")
         self.add_cmd_output("ls -laZR /var/lib/neutron/lock")
 
@@ -113,7 +113,7 @@ class DebianNeutron(OpenStackNeutron, DebianPlugin, UbuntuPlugin):
 
     def setup(self):
         super(DebianNeutron, self).setup()
-        self.add_copy_spec("/etc/sudoers.d/neutron_sudoers")
+        self.add_copy_spec("/etc/sudoers.d/neutron_sudoers", since=None)
 
 
 class RedHatNeutron(OpenStackNeutron, RedHatPlugin):
@@ -122,6 +122,6 @@ class RedHatNeutron(OpenStackNeutron, RedHatPlugin):
 
     def setup(self):
         super(RedHatNeutron, self).setup()
-        self.add_copy_spec("/etc/sudoers.d/neutron-rootwrap")
+        self.add_copy_spec("/etc/sudoers.d/neutron-rootwrap", since=None)
 
 # vim: set et ts=4 sw=4 :

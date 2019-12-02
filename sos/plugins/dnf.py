@@ -40,7 +40,7 @@ class DNFPlugin(Plugin, RedHatPlugin):
                         self.add_cmd_output("dnf module info " + module)
 
     def setup(self):
-        self.add_copy_spec("/etc/dnf/")
+        self.add_copy_spec(["/etc/dnf/"], since=None)
 
         if self.get_option("all_logs"):
             self.add_copy_spec("/var/log/dnf.*")

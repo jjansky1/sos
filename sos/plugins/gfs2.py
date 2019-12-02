@@ -25,13 +25,13 @@ class Gfs2(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
     def setup(self):
         self.add_copy_spec([
             "/sys/fs/gfs2/*/withdraw"
-        ])
+        ], since=None)
         self.add_cmd_output([
             "gfs_control ls -n",
             "gfs_control dump"
         ])
 
         if self.get_option("gfs2lockdump"):
-            self.add_copy_spec("/sys/kernel/debug/gfs2/*")
+            self.add_copy_spec("/sys/kernel/debug/gfs2/*", since=None)
 
 # vim: et ts=4 sw=4

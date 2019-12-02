@@ -24,7 +24,7 @@ class Grub(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/boot/grub/device.map",
             "/etc/grub.conf",
             "/etc/grub.d"
-        ])
+        ], since=None)
 
     def postproc(self):
         self.do_path_regex_sub(

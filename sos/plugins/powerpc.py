@@ -43,7 +43,7 @@ class PowerPC(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
                 "/proc/version",
                 "/dev/nvram",
                 "/var/lib/lsvpd/"
-            ])
+            ], since=None)
             self.add_cmd_output([
                 "ppc64_cpu --smt",
                 "ppc64_cpu --cores-present",
@@ -58,7 +58,9 @@ class PowerPC(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
             self.add_copy_spec([
                 "/proc/ppc64/lparcfg",
                 "/proc/ppc64/eeh",
-                "/proc/ppc64/systemcfg",
+                "/proc/ppc64/systemcfg"
+            ], since=None)
+            self.add_copy_spec([
                 "/var/log/platform",
                 "/var/log/drmgr",
                 "/var/log/drmgr.0"
@@ -80,7 +82,9 @@ class PowerPC(Plugin, RedHatPlugin, UbuntuPlugin, DebianPlugin):
                 "/proc/ppc64/eeh",
                 "/proc/ppc64/systemcfg",
                 "/proc/ppc64/topology_updates",
-                "/sys/firmware/opal/msglog",
+                "/sys/firmware/opal/msglog"
+            ], since=None)
+            self.add_copy_spec([
                 "/var/log/opal-elog/",
                 "/var/log/opal-prd"
             ])

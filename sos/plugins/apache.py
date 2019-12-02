@@ -56,7 +56,7 @@ class RedHatApache(Apache, RedHatPlugin):
             "/etc/httpd24/conf/httpd.conf",
             "/etc/httpd24/conf.d/*.conf",
             "/etc/httpd24/conf.modules.d/*.conf",
-        ])
+        ], since=None)
 
         self.add_forbidden_path("/etc/httpd/conf/password.conf")
 

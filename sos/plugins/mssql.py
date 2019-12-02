@@ -74,10 +74,11 @@ class MsSQL(Plugin, RedHatPlugin):
 
         # Expecting mssql_conf doesn't includeno sensitive information.
         self.add_copy_spec([
-            mssql_conf,
             errorlogfile + '/*',
             sqlagent_errorlogfile
         ])
+
+        self.add_copy_spec(mssql_conf, since=None)
 
         if not self.get_option('all_logs'):
             self.add_copy_spec(errorlogfile + '/*')

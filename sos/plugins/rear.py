@@ -26,10 +26,9 @@ class Rear(Plugin, RedHatPlugin):
             '/var/log/rear/*.tar.gz'
         ])
 
-        self.add_copy_spec([
-            '/etc/rear/*conf',
-            '/var/log/rear/*log*'
-        ])
+        self.add_copy_spec('/etc/rear/*conf', since=None)
+
+        self.add_copy_spec('/var/log/rear/*log*')
 
         self.add_cmd_output([
             'rear -V',

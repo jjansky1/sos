@@ -30,7 +30,7 @@ class Boot(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/boot/efi/efi/redhat/elilo.conf",
             "/etc/yaboot.conf",
             "/boot/yaboot.conf"
-        ])
+        ], since=None)
         self.add_cmd_output([
             "ls -lanR /boot",
             "lsinitrd"

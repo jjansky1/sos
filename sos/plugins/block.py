@@ -37,7 +37,7 @@ class Block(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/proc/partitions",
             "/proc/diskstats",
             "/sys/block/*/queue/scheduler"
-        ])
+        ], since=None)
 
         if os.path.isdir("/sys/block"):
             for disk in os.listdir("/sys/block"):

@@ -21,7 +21,7 @@ class Nvme(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
         return [dev for dev in sys_block if dev.startswith('nvme')]
 
     def setup(self):
-        self.add_copy_spec("/etc/nvme/discovery.conf")
+        self.add_copy_spec("/etc/nvme/discovery.conf", since=None)
         self.add_cmd_output([
             "nvme list",
             "nvme list-subsys",

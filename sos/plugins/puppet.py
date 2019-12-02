@@ -25,7 +25,6 @@ class Puppet(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/etc/puppet/rack/*",
             "/etc/puppet/manifests/*",
             "/etc/puppet/ssl/ca/inventory.txt",
-            "/var/log/puppet/*.log*",
             "/etc/puppetlabs/puppet/*.conf",
             "/etc/puppetlabs/puppetserver/conf.d/*.conf",
             "/etc/puppetlabs/puppet/rack/*",
@@ -35,6 +34,8 @@ class Puppet(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/var/lib/puppetlabs/puppet/ssl/ca/inventory.txt",
             "/var/lib/puppet/ssl/ca/inventory.txt"
         ])
+
+        self.add_copy_spec("/var/log/puppet/*.log*")
 
         self.add_cmd_output([
             'facter',

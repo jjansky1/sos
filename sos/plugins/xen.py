@@ -45,7 +45,7 @@ class Xen(Plugin, RedHatPlugin):
             "/proc/xen/balloon",
             "/proc/xen/capabilities",
             "/proc/xen/xsd_kva",
-            "/proc/xen/xsd_port"])
+            "/proc/xen/xsd_port"], since=None)
         # determine if CPU has PAE support
         self.add_cmd_output("grep pae /proc/cpuinfo")
         # determine if CPU has Intel-VT or AMD-V support
@@ -58,19 +58,19 @@ class Xen(Plugin, RedHatPlugin):
             self.dom_collect_proc()
             # determine if hardware virtualization support is enabled
             # in BIOS: /sys/hypervisor/properties/capabilities
-            self.add_copy_spec("/sys/hypervisor")
+            self.add_copy_spec("/sys/hypervisor", since=None)
         elif host_type == "hvm":
             # what do we collect here???
             pass
         elif host_type == "dom0":
             # default of dom0, collect lots of system information
+            self.add_copy_spec("/var/log/xen")
             self.add_copy_spec([
-                "/var/log/xen",
                 "/etc/xen",
                 "/sys/hypervisor/version",
                 "/sys/hypervisor/compilation",
                 "/sys/hypervisor/properties",
-                "/sys/hypervisor/type"])
+                "/sys/hypervisor/type"], since=None)
             self.add_cmd_output([
                 "xm dmesg",
                 "xm info",
@@ -80,11 +80,11 @@ class Xen(Plugin, RedHatPlugin):
             ])
             self.dom_collect_proc()
             if self.is_running_xenstored():
-                self.add_copy_spec("/sys/hypervisor/uuid")
+                self.add_copy_spec("/sys/hypervisor/uuid", since=None)
                 self.add_cmd_output("xenstore-ls")
             else:
                 # we need tdb instead of xenstore-ls if cannot get it.
-                self.add_copy_spec("/var/lib/xenstored/tdb")
+                self.add_copy_spec("/var/lib/xenstored/tdb", since=None)
 
             # FIXME: we *might* want to collect things in /sys/bus/xen*,
             # /sys/class/xen*, /sys/devices/xen*, /sys/modules/blk*,

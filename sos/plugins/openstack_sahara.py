@@ -23,7 +23,7 @@ class OpenStackSahara(Plugin):
         self.add_copy_spec([
             "/etc/sahara/",
             self.var_puppet_gen + "/etc/sahara/"
-        ])
+        ], since=None)
         self.add_journal(units="openstack-sahara-all")
         self.add_journal(units="openstack-sahara-api")
         self.add_journal(units="openstack-sahara-engine")
@@ -85,7 +85,7 @@ class RedHatSahara(OpenStackSahara, RedHatPlugin):
 
     def setup(self):
         super(RedHatSahara, self).setup()
-        self.add_copy_spec("/etc/sudoers.d/sahara*")
+        self.add_copy_spec("/etc/sudoers.d/sahara*", since=None)
 
 
 # vim: et ts=4 sw=4

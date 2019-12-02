@@ -27,7 +27,7 @@ class Memory(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
             "/proc/vmallocinfo",
             "/sys/kernel/mm/ksm",
             "/sys/kernel/mm/transparent_hugepage/enabled"
-        ])
+        ], since=None)
         self.add_cmd_output("free", root_symlink="free")
         self.add_cmd_output([
             "free -m",

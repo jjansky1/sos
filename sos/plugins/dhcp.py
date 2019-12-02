@@ -27,7 +27,7 @@ class RedHatDhcp(Dhcp, RedHatPlugin):
         self.add_copy_spec([
             "/etc/dhcpd.conf",
             "/etc/dhcp"
-        ])
+        ], since=None)
 
 
 class UbuntuDhcp(Dhcp, UbuntuPlugin):
@@ -40,6 +40,6 @@ class UbuntuDhcp(Dhcp, UbuntuPlugin):
         self.add_copy_spec([
             "/etc/default/udhcpd",
             "/etc/udhcpd.conf"
-        ])
+        ], since=None)
 
 # vim: set et ts=4 sw=4 :

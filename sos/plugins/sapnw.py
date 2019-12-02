@@ -121,17 +121,17 @@ class sapnw(Plugin, RedHatPlugin):
                     # SAP MAXDB
                     sid = fields[2][:-1]
                     self.add_copy_spec(
-                        "/sapdb/%s/data/config/%s.pah" % (sid, sid))
+                        "/sapdb/%s/data/config/%s.pah" % (sid, sid), since=None)
 
                 if dbtype == 'ora':
                     # Oracle
                     sid = fields[2][:-1]
-                    self.add_copy_spec("/oracle/%s/*/dbs/init.ora" % sid)
+                    self.add_copy_spec("/oracle/%s/*/dbs/init.ora" % sid, since=None)
 
                 if dbtype == 'syb':
                     # Sybase
                     sid = fields[2][:-1]
-                    self.add_copy_spec("/sybase/%s/ASE*/%s.cfg" % (sid, sid))
+                    self.add_copy_spec("/sybase/%s/ASE*/%s.cfg" % (sid, sid), since=None)
 
     def setup(self):
         self.collect_list_instances()

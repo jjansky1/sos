@@ -18,7 +18,7 @@ class Gdm(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin):
     packages = ('gdm',)
 
     def setup(self):
-        self.add_copy_spec("/etc/gdm/*")
+        self.add_copy_spec("/etc/gdm/*", since=None)
         self.add_journal(units="gdm")
         self.add_service_status("gdm")
 

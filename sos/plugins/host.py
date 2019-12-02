@@ -32,7 +32,7 @@ class Host(Plugin, RedHatPlugin, DebianPlugin):
         self.add_copy_spec([
             '/etc/sos.conf',
             '/etc/hostid',
-        ])
+        ], since=None)
 
         self.add_env_var([
             'REMOTEHOST',

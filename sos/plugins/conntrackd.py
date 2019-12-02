@@ -21,7 +21,7 @@ class Conntrackd(Plugin, RedHatPlugin, DebianPlugin, UbuntuPlugin, SuSEPlugin):
     packages = ('conntrack-tools', 'conntrackd')
 
     def setup(self):
-        self.add_copy_spec("/etc/conntrackd/conntrackd.conf")
+        self.add_copy_spec(["/etc/conntrackd/conntrackd.conf"], since=None)
         self.add_cmd_output([
             "conntrackd -s network",
             "conntrackd -s cache",

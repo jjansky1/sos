@@ -77,7 +77,7 @@ class OpenStackHeat(Plugin):
             self.var_puppet_gen + "_api_cfn/etc/httpd/conf.d/",
             self.var_puppet_gen + "_api_cfn/etc/httpd/conf.modules.d/*.conf",
             self.var_puppet_gen + "_api_cfn/var/spool/cron/heat",
-        ])
+        ], since=None)
 
     def running_in_container(self):
         for runtime in ["docker", "podman"]:

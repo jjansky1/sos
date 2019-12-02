@@ -106,12 +106,12 @@ class RedHatPostgreSQL(PostgreSQL, SCLPlugin):
 
         # Copy PostgreSQL config files.
         for filename in find("*.conf", pghome):
-            self.add_copy_spec(filename)
+            self.add_copy_spec(filename, since=None)
         for filename in find("*.conf", self.convert_copyspec_scl(scl, pghome)):
-            self.add_copy_spec(filename)
+            self.add_copy_spec(filename, since=None)
 
-        self.add_copy_spec(os.path.join(pghome, "data", "PG_VERSION"))
-        self.add_copy_spec(os.path.join(pghome, "data", "postmaster.opts"))
+        self.add_copy_spec(os.path.join(pghome, "data", "PG_VERSION"), since=None)
+        self.add_copy_spec(os.path.join(pghome, "data", "postmaster.opts"), since=None)
 
         self.add_copy_spec_scl(scl, os.path.join(pghome, "data", "PG_VERSION"))
         self.add_copy_spec_scl(scl, os.path.join(
@@ -131,11 +131,12 @@ class DebianPostgreSQL(PostgreSQL, DebianPlugin, UbuntuPlugin):
         super(DebianPostgreSQL, self).setup()
 
         self.add_copy_spec([
-            "/var/log/postgresql/*.log",
             "/etc/postgresql/*/main/*.conf",
             "/var/lib/postgresql/*/main/PG_VERSION",
             "/var/lib/postgresql/*/main/postmaster.opts"
-        ])
+        ], since=None)
+
+        self.add_copy_spec("/var/log/postgresql/*.log")
 
 
 # vim: set et ts=4 sw=4 :
