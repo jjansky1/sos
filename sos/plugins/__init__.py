@@ -744,6 +744,10 @@ class Plugin(object):
                 path = os.path.join(srcpath, name)
                 self._do_copy_path(path)
         except OSError as e:
+            if e.errno == errno.EPERM or errno.EACCES:
+                msg = "Permission denied"
+                self._log_warn("_copy_dir: '%s' %s" % (srcpath, msg))
+                return
             if e.errno == errno.ELOOP:
                 msg = "Too many levels of symbolic links copying"
                 self._log_error("_copy_dir: %s '%s'" % (msg, srcpath))
@@ -916,6 +920,7 @@ class Plugin(object):
             since = self.get_option('since')
 
         logarchive_pattern = re.compile(r'.*((\.(zip|gz|bz2|xz))|[-.][\d]+)$')
+        configfile_pattern = re.compile(r"^%s/*" % self.join_sysroot("etc"))
 
         if not self.test_predicate(pred=pred):
             self._log_info("skipped copy spec '%s' due to predicate (%s)" %
