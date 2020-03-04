@@ -22,7 +22,7 @@ class Foreman(Plugin):
     plugin_name = 'foreman'
     plugin_timeout = 1800
     profiles = ('sysmgmt',)
-    packages = ('foreman', 'foreman-proxy')
+    packages = ('foreman')
     option_list = [
         ('months', 'number of months for dynflow output', 'fast', 1)
     ]
@@ -73,19 +73,14 @@ class Foreman(Plugin):
         _host_f = _host_f.strip()
 
         # Collect these completely everytime
-        self.add_copy_spec([
-            "/var/log/foreman/production.log",
-            "/var/log/{}*/foreman-ssl_*_ssl.log".format(self.apachepkg)
-        ], sizelimit=0)
+        self.add_copy_spec("/var/log/foreman/production.log", sizelimit=0)
 
         # Allow limiting these
         self.add_copy_spec([
             "/etc/foreman/",
-            "/etc/foreman-proxy/",
             "/etc/sysconfig/foreman",
             "/etc/sysconfig/dynflowd",
             "/etc/default/foreman",
-            "/etc/foreman-installer/",
             "/var/log/foreman/dynflow_executor*log*",
             "/var/log/foreman/dynflow_executor*.output*",
             "/var/log/foreman/apipie_cache*.log*",
@@ -93,15 +88,8 @@ class Foreman(Plugin):
             "/var/log/foreman/db_migrate*log*",
             "/var/log/foreman/db_seed*log*",
             "/var/log/foreman/production.log[.-]*",
-            "/var/log/foreman-proxy/cron*log*",
-            "/var/log/foreman-proxy/migrate_settings*log*",
-            "/var/log/foreman-proxy/proxy*log*",
-            "/var/log/foreman-proxy/smart_proxy_dynflow_core*log*",
-            "/var/log/foreman-selinux-install.log",
-            "/var/log/foreman-proxy-certs-generate*",
-            "/var/log/foreman-installer/",
-            "/var/log/foreman-maintain/",
-            "/var/log/syslog*",
+            "/var/log/foreman-installer/foreman-proxy-certs-generate*",
+            "/var/log/{}*/foreman-ssl_*_ssl*log[.-]*".format(self.apachepkg),
             # Specific to TFM, _all_ catalina logs are relevant. Adding this
             # here rather than the tomcat plugin to ease maintenance and not
             # pollute non-Sat sosreports that enable the tomcat plugin
@@ -114,30 +102,16 @@ class Foreman(Plugin):
             "/etc/puppetlabs/puppet/ssl/certs/ca.pem",
             "/etc/puppetlabs/puppet/ssl/certs/{}.pem".format(_hostname),
             "/var/lib/puppet/ssl/certs/{}.pem".format(_hostname),
-            "/var/log/{}*/foreman-ssl_*_ssl*log[.-]*".format(self.apachepkg),
-            "/var/log/{}*/katello-reverse-proxy_access_ssl.log*".format(
-                self.apachepkg),
-            "/var/log/{}*/katello-reverse-proxy_error_ssl.log*".format(
-                self.apachepkg),
-            "/var/log/{}*/error_log*".format(self.apachepkg),
-            "/etc/{}*/conf/".format(self.apachepkg),
-            "/etc/{}*/conf.d/".format(self.apachepkg)
         ])
 
         self.add_cmd_output([
             'bundle --local --gemfile=/usr/share/foreman/Gemfile*',
             'hammer ping',
-            'foreman-selinux-relabel -nv',
-            'foreman-maintain service status',
             'passenger-status --show pool',
             'passenger-status --show requests',
             'passenger-status --show backtraces',
             'passenger-memory-stats',
-            'ls -lanR /root/ssl-build',
             'ls -lanR /usr/share/foreman/config/hooks',
-            'ping -c1 -W1 %s' % _hostname,
-            'ping -c1 -W1 %s' % _host_f,
-            'ping -c1 -W1 localhost'
         ])
 
         # Dynflow Sidekiq
